@@ -1,0 +1,432 @@
+
+.title {
+  --color: white;
+  size: large;
+  text-align: center;
+  font-family: "Gotham-Bold";
+}
+
+.iconBack {
+  color: white;
+  width: 40px;
+  font-size: 30px;
+  font-family: "Gotham-Bold";
+}
+
+.content-img {
+  background: linear-gradient(#d4d4d4, transparent);
+}
+
+.profile-img {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  display: block;
+  position: relative;
+  width: 95%;
+  height: 8rem;
+  margin-left: 2.5%;
+  background-image: linear-gradient(90deg, rgb(0, 93, 206) 0%, rgb(73, 128, 221) 35%, rgb(0, 93, 206) 100%);
+  border-radius: 0 0 20px 20px;
+}
+
+.profile-img img {
+  /* posiciona al centro del contenedor la imagen */
+  display: flex;
+  width: 150px;
+  height: 150px;
+  align-items: center;
+  justify-content: center;
+  background-color: #DFE5F2;
+  border-radius: 50%;
+  box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+  position: absolute;
+  bottom: -40px;
+  left: calc(50% - 70px);
+  z-index: 1;
+}
+
+
+.nameAssam{
+  text-align: center;
+  height: 55px;
+}
+
+.nameAssam p {
+  font-size: 14.5px;
+  font-family: "Gotham-Bold"; 
+}
+
+ion-segment {
+  --background: #607d8b00;
+  margin-top: 10px;
+}
+
+ion-label p{
+  text-align: center;
+  margin-top: 5px;
+  font-family: "Gotham-Medium";
+  font-size: 12.5px;
+} 
+
+ion-item ion-label h3{
+  font-size: 12.5px;
+  font-family: "Gotham-Bold"
+}
+
+ion-item h3{
+  font-size: 12.5px;
+  font-family: "Gotham-Bold"
+}
+
+
+ion-list ion-button {
+  font-family: "Gotham-Medium"; 
+ }
+
+ ion-segment-button ion-label {
+  font-size: 13px;
+ }
+
+ ion-buttons.ios ion-back-button.ios{
+  margin-right: 7px
+}
+
+.unirButton.md{
+  padding-top: 0px; 
+  padding-bottom: 0px;
+}
+
+
+
+.seccion-perfil-usuario .perfil-usuario-body,
+.seccion-perfil-usuario {
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+}
+
+.seccion-perfil-usuario .perfil-usuario-header {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background: linear-gradient(#B873FF, transparent);
+  margin-bottom: 1.25rem;
+}
+
+.seccion-perfil-usuario .perfil-usuario-portada {
+  display: block;
+  position: relative;
+  width: 90%;
+  height: 17rem;
+  background-image: linear-gradient(45deg, #BC3CFF, #317FFF);
+  border-radius: 0 0 20px 20px;
+  /*
+    background-image: url('http://localhost/multimedia/png/user-portada-3.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    */
+}
+
+.seccion-perfil-usuario .perfil-usuario-portada .boton-portada {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  border: 0;
+  border-radius: 8px;
+  padding: 12px 25px;
+  background-color: rgba(0, 0, 0, .5);
+  color: #fff;
+  cursor: pointer;
+}
+
+.seccion-perfil-usuario .perfil-usuario-portada .boton-portada i {
+  margin-right: 1rem;
+}
+
+.seccion-perfil-usuario .perfil-usuario-avatar {
+  display: flex;
+  width: 180px;
+  height: 180px;
+  align-items: center;
+  justify-content: center;
+  border: 7px solid #FFFFFF;
+  background-color: #DFE5F2;
+  border-radius: 50%;
+  box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+  position: absolute;
+  bottom: -40px;
+  left: calc(50% - 90px);
+  z-index: 1;
+}
+
+.seccion-perfil-usuario .perfil-usuario-avatar img {
+  width: 100%;
+  position: relative;
+  border-radius: 50%;
+}
+
+.seccion-perfil-usuario .perfil-usuario-avatar .boton-avatar {
+  position: absolute;
+  left: -2px;
+  top: -2px;
+  border: 0;
+  background-color: #fff;
+  box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.seccion-perfil-usuario .perfil-usuario-body {
+  width: 70%;
+  position: relative;
+  max-width: 750px;
+}
+
+.seccion-perfil-usuario .perfil-usuario-body .titulo {
+  display: block;
+  width: 100%;
+  font-size: 1.75em;
+  margin-bottom: 0.5rem;
+}
+
+.seccion-perfil-usuario .perfil-usuario-body .texto {
+  color: #848484;
+  font-size: 0.95em;
+}
+
+.seccion-perfil-usuario .perfil-usuario-footer,
+.seccion-perfil-usuario .perfil-usuario-bio {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1.5rem 2rem;
+  box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+  background-color: #fff;
+  border-radius: 15px;
+  width: 100%;
+}
+
+.seccion-perfil-usuario .perfil-usuario-bio {
+  margin-bottom: 1.25rem;
+  text-align: center;
+}
+
+.seccion-perfil-usuario .lista-datos {
+  width: 50%;
+  list-style: none;
+}
+
+.seccion-perfil-usuario .lista-datos li {
+  padding: 5px 0;
+}
+
+.seccion-perfil-usuario .lista-datos li>.icono {
+  margin-right: 1rem;
+  font-size: 1.2rem;
+  vertical-align: middle;
+}
+
+.seccion-perfil-usuario .redes-sociales {
+  position: absolute;
+  right: calc(0px - 50px - 1rem);
+  top: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.seccion-perfil-usuario .redes-sociales .boton-redes {
+  border: 0;
+  background-color: #fff;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  color: #fff;
+  box-shadow: 0 0 12px rgba(0, 0, 0, .2);
+  font-size: 1.3rem;
+}
+
+.seccion-perfil-usuario .redes-sociales .boton-redes+.boton-redes {
+  margin-top: .5rem;
+}
+
+.seccion-perfil-usuario .boton-redes.facebook {
+  background-color: #5955FF;
+}
+
+.seccion-perfil-usuario .boton-redes.twitter {
+  background-color: #35E1BF;
+}
+
+.seccion-perfil-usuario .boton-redes.instagram {
+  background: linear-gradient(45deg, #FF2DFD, #40A7FF);
+}
+
+/* adactacion a dispositivos */
+@media (max-width: 750px) {
+  .seccion-perfil-usuario .lista-datos {
+    width: 100%;
+  }
+
+  .seccion-perfil-usuario .perfil-usuario-portada,
+  .seccion-perfil-usuario .perfil-usuario-body {
+    width: 95%;
+  }
+
+  .seccion-perfil-usuario .redes-sociales {
+    position: relative;
+    flex-direction: row;
+    width: 100%;
+    left: 0;
+    text-align: center;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    align-items: center;
+    justify-content: center
+  }
+
+  .seccion-perfil-usuario .redes-sociales .boton-redes+.boton-redes {
+    margin-left: 1rem;
+    margin-top: 0;
+  }
+
+
+}
+
+  .tolbar1 {
+    --background: #009fe4;
+    border-bottom-left-radius: 60px;
+  }
+  
+  .tolbar2{
+    --background: white;
+    border-top-right-radius: 70px;
+    height: 70px;
+  }
+  
+  .header-content {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .header-content img{
+    width: 295px;
+    height: 80px;
+  }
+  
+  .contenedor-superpuesto {
+    position: relative;
+    top: 0;
+    left: 0;
+    background-color: #009fe4;
+    height: 67px;
+    /* Segundo color superpuesto */
+  }
+
+  .circle {
+    width: 75px;
+    height: 75px;
+    background-color: #e10717;
+    border-radius: 50%;
+    position: absolute;
+    top: 94.5%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    z-index: 1;
+    /* Color del icono */
+  }
+  
+  
+  .square {
+    width: 60px;
+    height: 35px;
+    background-color: #e10717;
+    /* Color del cuadrado */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30% 10% 30% 10%;
+  }
+  
+  .left-square {
+    position: absolute;
+    left: 15%;
+    top: 94.5%;
+    transform: translateY(-50%);
+    z-index: 1;
+  }
+  
+  .right-square {
+    position: absolute;
+    right: 15%;
+    top: 94.5%;
+    transform: translateY(-50%);
+    z-index: 1;
+  }
+  
+  .footer-img{
+    background-color: transparent !important;
+    position: absolute;
+    margin-top: 200px;
+    bottom: 0;
+    z-index: 0;
+    
+  }
+  
+  @media (min-width: 500px) {
+      .footer-img {
+          width: 100%; /* Puedes ajustar este valor según sea necesario */
+          height: 15%;
+      }
+  
+      .right-square{
+        top: 93%;
+      }
+  
+      .left-square{
+        top: 93%;
+      }
+  }
+
+  .cuadrado-con-texto {
+    margin-top: 2.5%;
+    margin-left: 12%;
+    margin-right: 12%;
+    background-color: #3498db;
+    /* Color del cuadrado */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #e10717;
+    padding: auto;
+    border-radius: 5px;
+  }
+  
+  .cuadrado-con-texto p {
+    font-family: "Gotham-Bold";
+    color: white;
+    font-style: italic;
+    font-size: 16px;
+    margin-left: 3px;
+    margin-right: 3px;
+    margin-top: 7px;
+    margin-bottom: 7px;
+  }
+
+

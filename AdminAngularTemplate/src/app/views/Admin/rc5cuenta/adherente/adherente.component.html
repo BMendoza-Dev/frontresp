@@ -1,0 +1,116 @@
+<c-col>
+    <c-card class="mb-4">
+        <c-callout style="margin-top: 0px; margin-bottom: 0px;" color="primary">
+          <form cForm>
+            <c-row [gutter]="3" class="align-items-center">
+                <c-col xs="auto">
+                    <label cLabel="col" for="inputPassword"> Número de cédula </label>
+                </c-col>
+                <c-col xs="auto">
+                    <input
+                        aria-describedby="passwordHelpInline"
+                        cFormControl
+                        id="inputPassword"
+                        type="text"
+                        maxlength="10"
+                        required
+                        minlength="10"
+                        (input)="checkInputLength($event)"> <!-- Crea una referencia local para acceder a la validación -->
+                </c-col>
+                <c-col xs="auto">
+                    <span cFormText id="passwordHelpInline">
+                        Ingrese un número de cédula válido
+                    </span>
+                </c-col>
+            </c-row>
+            <!-- Agrega un mensaje de error para la validación de longitud mínima -->
+        </form>
+    </c-callout>
+    </c-card>
+    <label *ngIf="errorCedula == true" cLabel class="sinadherente">{{sinadherente}}</label>
+    <c-card *ngIf="imgLoading == false">
+        <img src="https://yosoyrc5.com/rc5.png" alt="">
+    </c-card>
+    <c-card  *ngIf="imgLoading == true">
+        <c-card-body *ngIf="loading == true">
+          <h5 cCardTitle cPlaceholderAnimation="glow">
+            <span cCol="6" cPlaceholder></span>
+          </h5>
+          <p cCardText cPlaceholderAnimation="glow">
+            <span cCol xs="7" cPlaceholder class="me-1"></span>
+            <span cCol="4" cPlaceholder class="me-1"></span>
+            <span cCol="4" cPlaceholder class="me-1"></span>
+            <span cCol="6" cPlaceholder class="me-1"></span>
+            <span cCol="2" cPlaceholder class="me-1"></span>
+            <span cCol="8" cPlaceholder class="me-1"></span>
+            <span cCol="6" cPlaceholder class="me-1"></span>
+            <span cCol="2" cPlaceholder class="me-1"></span>
+            <span cCol="6" cPlaceholder class="me-1"></span>
+            <span cCol="8" cPlaceholder class="me-1"></span>
+          </p>
+          <!-- <p cPlaceholderAnimation="glow">
+            <a cButton cCol="7" cPlaceholder color="primary" disabled routerLink="./"></a>
+          </p> -->
+        </c-card-body>
+        <c-card-body *ngIf="loading == false">
+            <form #customStylesForm="ngForm"
+          [gutter]="3"
+          novalidate
+          cForm cRow
+          class="needs-validation"
+        >
+        <c-col [md]="6">
+            <label cLabel for="validationCustom02">Cédula: </label>
+            <input cFormControl name="validationCustom02" id="validationCustom02" required type="text" [(ngModel)]="cedula" disabled/>
+        </c-col>
+      <c-col [md]="6">
+        <label cLabel for="validationCustom01" >Nombres y apellidos: </label>
+        <input cFormControl name="validationCustom01" id="validationCustom01" required [(ngModel)]="nombres" type="text"  disabled />
+      </c-col>
+      <c-col [md]="12" style="text-align: center;">
+        <label  *ngIf="valsinadherente == false" cLabel class="adherente">{{nombres}} con CI: {{cedula}} {{adherente.length < 10 ? 'es solo' : 'es'}} {{adherente}}</label>
+        <label *ngIf="valsinadherente == true" cLabel class="sinadherente">{{sinadherente}}</label>
+    </c-col>
+    
+      <!-- <c-col [md]="3">
+        <label cLabel for="validationCustomUsername">Sexo: </label>
+        <input cFormControl id="validationCustom03" required type="text" disabled/>
+      </c-col>
+      <c-col [md]="2">
+        <label cLabel for="validationCustom03">Junta:</label>
+        <input cFormControl id="validationCustom03" required type="text" disabled/>
+      </c-col>
+      <c-col [md]="6">
+        <label cLabel for="validationCustom04">Recinto electoral:</label>
+        <input cFormControl id="validationCustom03" required type="text" disabled/>
+      </c-col>
+      
+      <c-col [md]="4">
+        <label cLabel for="validationCustom05">Provincia:</label>
+        <input cFormControl id="validationCustom05" required type="text" disabled/>
+      </c-col>
+      <c-col [md]="4">
+        <label cLabel for="validationCustom05">Cantón:</label>
+        <input cFormControl id="validationCustom05" required type="text" disabled/>
+      </c-col>
+      <c-col [md]="4">
+        <label cLabel for="validationCustom05">Parroquia:</label>
+        <input cFormControl id="validationCustom05" required type="text" disabled/>
+      </c-col>
+      <c-col [md]="4">
+        <label cLabel for="validationCustom05">Zona:</label>
+        <input cFormControl id="validationCustom05" required type="text" disabled/>
+      </c-col>
+      <c-col [md]="4
+      ">
+        
+      </c-col> -->
+      
+     
+            </form>
+          </c-card-body>
+     </c-card>
+</c-col>
+
+
+

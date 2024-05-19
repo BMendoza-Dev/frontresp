@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-searchbar class="search" placeholder="Buscar asambleísta" animated
+      (ionChange)="buscar($event)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="assamblyfilter.length>0 ;else sinRegistro">
+    <ion-card *ngFor="let item of assamblyfilter.slice(0,lim);let index = index">
+      <ion-item (click)="goInfAssam(item.id)">
+        <div style="width: 45px; margin-right: 5px;">
+          <img src="{{item.imagen.changingThisBreaksApplicationSecurity}}" />
+        </div>
+        <ion-label>
+          <h2 style="color: #3880ff;">{{item.LastFirstName}}</h2>
+          <h3>{{item.territorialDivision}}</h3>
+          <p>Curul {{item.curul}}</p>
+        </ion-label>
+      </ion-item>
+    </ion-card>
+  </div>
+
+  <ng-template #sinRegistro>
+    <ion-card>
+      <p class="sinRegis">Sin registro</p>
+    </ion-card>
+  </ng-template>
+  <ion-infinite-scroll *ngIf="assamblyfilter.length > lim" (ionInfinite)="onIonInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

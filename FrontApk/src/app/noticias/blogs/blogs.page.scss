@@ -1,0 +1,291 @@
+.iconBack{
+    color: white;
+    width: 40px; font-size: 24px;
+  }
+
+  .title{
+    --color : white;
+    //size: large;
+    text-align: center;
+    font-family: "Gotham-Bold";
+    font-size: 15px;
+    padding: 0px 20px;
+  }
+
+  .title2{
+    text-align: center;
+    margin-top: 5%; margin-bottom: 4%;
+    font-family: "Gotham-Book";
+    font-size: 20px;
+    color: #00b9ec;
+    margin-bottom: 5px;
+  }
+
+  .linea {
+  border-top: 1px solid #00b9ec;
+  height: 2px;
+  max-width: 100px;
+  padding: 0;
+  margin: 10px auto 20px auto;
+  background-color: #00b9ec;
+  height: 5px;
+  }
+
+  .lineaSepardor{
+    border-top: 1px solid #00b9ec;
+  height: 2px;
+  max-width: 100px;
+  padding: 0;
+  margin: 10px auto 20px auto;
+  background-color: #00b9ec;
+  height: 5px;
+  }
+
+  h4{
+    font-family: "Gotham-Bold";
+  }
+
+
+  ion-text{
+    font-family: "Gotham-Book";
+  }
+
+ ion-item span{
+  font-size: 13px;
+ }
+
+ ion-buttons.ios ion-back-button.ios{
+  margin-right: 7px
+}
+
+.image--cover {
+  width: 35px;
+  height: 35px;
+  border-radius: 50%;
+  margin: 0px;
+  object-fit: cover;
+  object-position: center right;
+}
+
+.users{
+  text-decoration: none;
+  color: #374457;
+  font-size: 18px;
+  font-weight: bold;
+  display:flex;
+  align-items:center;
+}
+
+.container-username{
+  display:flex;
+  flex-direction:column;
+  text-align: left;
+}
+
+.header-username{
+  font-size: 14px;
+  font-family: "Gotham-Medium";
+}
+
+.cargoAsambl{
+  color: #929293; 
+  font-weight: 100; 
+  font-size: 12px;
+  font-family: "Gotham-Book";
+}
+
+.titleCard{
+  font-family: "Gotham-Medium";
+  text-align: left;
+}
+
+.contentCard{
+  font-family: "Gotham-Book";
+  text-align: left;
+}
+
+.fechaCard{
+  font-family: "Gotham-Medium";
+  margin-top: 5px;
+}
+
+.botonVer{
+  --border-color: #00b9ec;
+  color: #00b9ec;
+}
+
+ion-toolbar{
+  --background: #00b9ec;
+}
+
+.iconLoad{
+  color: #00b9ec;
+  margin: auto 10px auto auto;
+}
+.iconLoad2{
+  margin: auto 10px auto auto;
+}
+
+img {
+  max-width: 100%;
+  max-height: 250px;
+  display: block;
+  margin: 0 auto;
+}
+
+ion-card {
+  --background : #f9f9f9;
+  box-shadow:none;
+}
+
+
+.sticky-segment {
+  position: fixed;
+  width: 100%;
+  top: 0;
+}
+
+ion-segment-button{
+  color: white;
+  --color-checked: #003365;;
+  font-family: "Gotham-Book";
+}
+
+
+ion-slides {
+  height: 100%;
+}
+
+ion-segment.ios{
+  min-width: auto;
+  border-radius: 0px
+}
+
+ion-segment.ios ion-segment-button.ios{
+  min-width: auto;
+  --indicator-height: 10%;
+}
+
+
+/// version 2
+
+.tolbar1 {
+  --background: #009fe4;
+  border-bottom-left-radius: 60px;
+}
+
+.tolbar2 {
+  --background: white;
+  border-top-right-radius: 70px;
+  height: 70px;
+}
+
+.header-content {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.header-content img {
+  width: 295px;
+  height: 80px;
+}
+
+.contenedor-superpuesto {
+  position: relative;
+  top: 0;
+  left: 0;
+  background-color: #009fe4;
+  /* Segundo color superpuesto */
+  height: 67px;
+}
+
+
+.circle {
+  width: 75px;
+  height: 75px;
+  background-color: #e10717;
+  border-radius: 50%;
+  position: absolute;
+  top: 94.5%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  z-index: 1;
+  /* Color del icono */
+}
+
+
+.square {
+  width: 60px;
+  height: 35px;
+  background-color: #e10717;
+  /* Color del cuadrado */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 30% 10% 30% 10%;
+}
+
+.left-square {
+  position: absolute;
+  left: 15%;
+  top: 94.5%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.right-square {
+  position: absolute;
+  right: 15%;
+  top: 94.5%;
+  transform: translateY(-50%);
+  z-index: 1;
+}
+
+.footer-img {
+  background-color: transparent !important;
+  position: absolute;
+  margin-top: 200px;
+  bottom: 0;
+  z-index: 0;
+
+}
+
+@media (min-width: 500px) {
+  .footer-img {
+    width: 100%;
+    /* Puedes ajustar este valor según sea necesario */
+    height: 15%;
+  }
+
+  .right-square {
+    top: 93%;
+  }
+
+  .left-square {
+    top: 93%;
+  }
+}
+ion-segment {
+  --background: #e10717;  
+}
+.cuadrado-con-texto {
+  margin-top: 2.5%;
+  margin-left: 12%;
+  margin-right: 12%;
+  background-color: #3498db;
+  /* Color del cuadrado */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #e10717;
+  padding: auto;
+  border-radius: 10px;
+}

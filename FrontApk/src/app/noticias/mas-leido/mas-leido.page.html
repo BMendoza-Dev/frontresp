@@ -1,0 +1,45 @@
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content
+      pullingIcon="chevron-down-circle-outline"
+      pullingText="Refrescar"
+      refreshingSpinner="circles">
+    </ion-refresher-content>
+  </ion-refresher>
+  <div *ngIf="blogTop.length>0 ;else sinRegistro">
+    <!-- <p class="title2"> MÁS LEÍDO </p>
+    <div class="linea"></div> -->
+    <ion-card *ngFor="let item of blogTop.slice(0,lim);let index = index" (click)="goInfBlog(item.id)">
+      <ion-card-header>
+        <div class="container">
+          <!-- <a class="users">
+            <div class="container-username">
+              <span class="header-username"> Luisa Gonzáles</span>
+              <span class="cargoAsambl">Docente</span>
+            </div>
+          </a> -->
+        </div>
+        <ion-card-title class="titleCard">{{item.blogtitulo}}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content class="contentCard">
+        {{item.blogdescripcion}}
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <ng-template #sinRegistro>
+    <ion-card>
+      <p class="sinRegis">Sin registros</p>
+    </ion-card>
+  </ng-template>
+  <!-- <div style="text-align: right; margin-right: 2%;">
+    <ion-button style="font-size: 17px;" size="default">
+      SIGUIENTE
+      <ion-icon slot="end" name="arrow-redo-outline"></ion-icon>
+    </ion-button>
+  </div> -->
+  <ion-infinite-scroll *ngIf="blogTop.length > lim" (ionInfinite)="onIonInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

@@ -1,0 +1,137 @@
+<div style="background-image: url('../../../../assets/img/rc5poderdelagente.png')"
+  class="bg-light min-vh-100 d-flex flex-row align-items-center">
+  <c-container>
+    <c-row class="justify-content-center">
+      <c-col md="8">
+        <c-card-group>
+          <c-card class="cardImg" >
+            <c-card-body class="text-center">
+              <div style="display: flex; justify-content: center; align-items: center; height: 100%;">
+                <div>
+                  <img src="../../../../assets/img/manual RC5-1.png" style="max-width: 190px;">
+                </div>
+              </div>
+            </c-card-body>
+          </c-card>
+          <div>{{error}}</div>
+          <c-card style="background-color: #133962;" class="text-white p-3">
+            <c-card-body >
+                    <form cForm>
+                        <c-row class="align-items-center">
+                            <c-col >
+                                <label cLabel="col" for="inputPassword"> Número de cédula </label>
+                            </c-col>
+                            <c-col >
+                                <input
+                                    aria-describedby="passwordHelpInline"
+                                    cFormControl
+                                    id="inputPassword"
+                                    type="text"
+                                    maxlength="10"
+                                    required
+                                    minlength="10"
+                                    (input)="checkInputLength($event)"> <!-- Crea una referencia local para acceder a la validación -->
+                            </c-col>
+                        </c-row>
+                        
+                        <!-- Agrega un mensaje de error para la validación de longitud mínima -->
+                    </form>
+                    <label *ngIf="errorCedula == true" cLabel class="sinadherente">{{sinadherente}}</label>
+                    <c-card *ngIf="imgLoading == false" style="margin-top: 10%;">
+                        <img src="https://yosoyrc5.com/rc5.png" alt="">
+                    </c-card>
+    <div *ngIf="imgLoading == true">
+      <!-- <div > -->
+        <c-card-body *ngIf="loading == true">
+            <h5 cCardTitle cPlaceholderAnimation="glow">
+              <span cCol="6" cPlaceholder></span>
+            </h5>
+            <p cCardText cPlaceholderAnimation="glow">
+              <span cCol xs="7" cPlaceholder class="me-1"></span>
+              <span cCol="4" cPlaceholder class="me-1"></span>
+              <span cCol="4" cPlaceholder class="me-1"></span>
+              <span cCol="6" cPlaceholder class="me-1"></span>
+              <span cCol="2" cPlaceholder class="me-1"></span>
+              <span cCol="8" cPlaceholder class="me-1"></span>
+              <span cCol="6" cPlaceholder class="me-1"></span>
+              <span cCol="2" cPlaceholder class="me-1"></span>
+              <span cCol="6" cPlaceholder class="me-1"></span>
+              <span cCol="8" cPlaceholder class="me-1"></span>
+            </p>
+          </c-card-body>
+          <div class="form-container">
+            <form *ngIf="loading == false"  style="margin-top: 25px; margin-right: 0px !important;" #customStylesForm="ngForm"
+          [gutter]="3"
+          novalidate
+          cForm row
+          class="needs-validation"
+        >
+      <c-col [md]="12" style="text-align: center;">
+        <label  *ngIf="valsinadherente == false" cLabel class="adherente">{{nombres}} CON CI: {{cedula}} {{adherente.length < 10 ? 'ES SOLO' : 'ES'}} {{adherente}} DE LA REVOLUCIÓN CIUDADANA</label>
+        <label *ngIf="valsinadherente == true" cLabel class="sinadherente">{{sinadherente}}</label>
+    </c-col>
+          
+          
+          <!-- <div>
+            <c-col [md]="12">
+              <label cLabel for="validationCustom01" >Nombres y apellidos: <span class="is-required">*</span></label>
+              <input cFormControl name="validationCustom02" id="validationCustom02" required [(ngModel)]="nombres" type="text"  disabled />
+            </c-col>
+            <c-col [md]="12">
+              <label cLabel for="validationCustom03" >País:<span class="is-required">*</span></label>
+              <input cFormControl name="validationCustom03" id="validationCustom03" required [(ngModel)]="pais" type="text"  disabled />
+            </c-col>
+            <c-col [md]="12">
+              <label cLabel for="validationCustom04" >{{extrangero ? 'Circunscripción':'Provincia:'}}<span class="is-required">*</span></label>
+              <input cFormControl name="validationCustom04" id="validationCustom04" required [(ngModel)]="provincia" type="text"  disabled />
+            </c-col>
+            <c-col [md]="12">
+              <label cLabel for="validationCustom05" >{{extrangero ? 'País de circunscripción':'Cantón:'}}<span class="is-required">*</span></label>
+              <input cFormControl name="validationCustom05" id="validationCustom05" required [(ngModel)]="canton" type="text"  disabled />
+            </c-col>
+            <c-col [md]="12">
+              <label cLabel for="validationCustom06" >{{extrangero ? 'Centro electoral':'Parroquia:'}}<span class="is-required">*</span></label>
+              <input cFormControl name="validationCustom06" id="validationCustom06" required  [(ngModel)]="parroquia" type="text"  disabled />
+            </c-col>
+            <c-col [md]="12">
+              <label cLabel for="validationCustom07" >Teléfono celular: <span class="is-required">*</span></label>
+              <input cFormControl name="validationCustom07" id="validationCustom07" required  type="text"  />
+            </c-col>
+            <c-col [md]="12">
+              <label cLabel for="validationCustom08" >Correo electrónico: <span class="is-required">*</span></label>
+              <input cFormControl name="validationCustom08" id="validationCustom08" required  type="text"  />
+            </c-col>
+            <c-col [md]="12">
+              <label cLabel for="validationCustom09" >Cuenta X (twitter): </label>
+              <input cFormControl name="validationCustom09" id="validationCustom09" required  type="text"  />
+            </c-col>
+            <c-col [md]="12">
+              <label cLabel for="validationCustom10" >Cuenta Facebook: </label>
+              <input cFormControl name="validationCustom10" id="validationCustom10" required  type="text"  />
+            </c-col>
+            <c-col [md]="12">
+              <label cLabel for="validationCustom11" >Cuenta TikTok: </label>
+              <input cFormControl name="validationCustom11" id="validationCustom11" required  type="text"  />
+            </c-col>
+            <c-col [md]="12">
+              <label cLabel for="validationCustom12" >Cuenta en Instagram: </label>
+              <input cFormControl name="validationCustom12" id="validationCustom12" required  type="text"  />
+            </c-col>
+            <c-col [md]="12" style="text-align: center;">
+              <button style="width: 120px;" cButton color="success" variant="outline" (click)="enviar()">Ingresar</button>
+            </c-col>
+          </div> -->
+          </form>
+          </div>
+          
+          
+    </div>
+            </c-card-body>
+          </c-card>
+          
+        </c-card-group>
+      </c-col>
+    </c-row>
+  </c-container>
+  <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "ball-clip-rotate-multiple" [fullScreen] = "true"><p style="color: white" > Cargando... </p></ngx-spinner>
+</div>

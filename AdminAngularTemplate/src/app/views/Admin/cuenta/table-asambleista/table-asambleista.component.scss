@@ -1,0 +1,11 @@
+.is-required {
+    margin-left: 2px;
+    color: red;
+    font-weight: bold;
+  }
+
+  .my-pagination ::ng-deep .ngx-pagination .current {
+    --background: red;
+  }
+
+ 

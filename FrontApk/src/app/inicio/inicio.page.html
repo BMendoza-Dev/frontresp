@@ -1,0 +1,177 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="gallery">
+    <ion-img src="../../assets/imgs/back_02_home_rc.jpg"></ion-img>
+    <ion-img src="../../assets/imgs/logo_rc_200px.png" id="stilo"></ion-img>
+    <ion-img src="../../assets/imgs/papaitocorrea.png" id="stilo2"> </ion-img>
+    <!--ion-img src="../../assets/imgs/adespertar.png"></ion-img-->
+    <p id="stilo3">"Pronto La Patria Renacerá"</p>
+  </div>
+  <div>
+    <div class="slides ion-margin-bottom">
+      <ion-slides [options]="slidesOptions">
+        <ion-slide>
+          <ion-card class="slideCard" [routerLink]="['../blogs']">
+            <ion-card-header>
+              <!--div class="main" [routerLink]="['../ultimas']">
+                <img src="../../assets/imgs/logo_rc_200px.png">
+              </!div-->
+              <img class="files" src="../../assets/imgs/ultimasNoticias.png">
+            </ion-card-header>
+            <!--ion-card-content class="ion-text-left">
+              <ion-card-title class="ion-margin-bottom"></ion-card-title>
+              <ion-card-subtitle class="ion-text-right"></ion-card-subtitle>
+              <ion-progress-bar value="0.5" color="custom"></ion-progress-bar>
+            </!ion-card-content-->
+          </ion-card>
+        </ion-slide>
+
+        <!--ion-slide>
+          <ion-card class="slideCard">
+            <ion-card-header>
+              <div class="main">
+                <img src="../../assets/imgs/logo_rc_200px.png">
+              </!div>
+              <img class="files" src="../../assets/imgs/masLeidos.png">
+            </ion-card-header>
+            <ion-card-content class="ion-text-left">
+              <ion-card-title class="ion-margin-bottom"></ion-card-title>
+              <ion-card-subtitle class="ion-text-right"></ion-card-subtitle>
+              <ion-progress-bar value="0.5" color="custom"></ion-progress-bar>
+            </!ion-card-content>
+          </ion-card>
+        </ion-slide-->
+
+        <ion-slide>
+          <ion-card class="slideCard" [routerLink]="['../tabs/asambleistas']">
+            <ion-card-header>
+              <!--div class="main">
+                <img src="../../assets/imgs/logo_rc_200px.png">
+              </!div-->
+              <img class="files" src="../../assets/imgs/Asambleistas.png">
+            </ion-card-header>
+            <!--ion-card-content class="ion-text-left">
+              <ion-card-title class="ion-margin-bottom"></ion-card-title>
+              <ion-card-subtitle class="ion-text-right"></ion-card-subtitle>
+              <ion-progress-bar value="0.5" color="custom"></ion-progress-bar>
+            </!ion-card-content-->
+          </ion-card>
+        </ion-slide>
+
+        <ion-slide>
+          <ion-card class="slideCard" [routerLink]="['../envivo']">
+            <ion-card-header>
+              <!--div class="main">
+                <img src="../../assets/imgs/logo_rc_200px.png">
+              </!div-->
+              <img class="files" src="../../assets/imgs/enVivo.png">
+            </ion-card-header>
+            <!--ion-card-content class="ion-text-left">
+              <ion-card-title class="ion-margin-bottom"></ion-card-title>
+              <ion-card-subtitle class="ion-text-right"></ion-card-subtitle>
+              <ion-progress-bar value="0.5" color="custom"></ion-progress-bar>
+            </!ion-card-content-->
+          </ion-card>
+        </ion-slide>
+
+        <ion-slide>
+          <ion-card class="slideCard" [routerLink]="['../preguntas']">
+            <ion-card-header>
+              <!--div class="main">
+                <img src="../../assets/imgs/logo_rc_200px.png">
+              </!div-->
+              <img class="files" src="../../assets/imgs/Preguntas.png">
+            </ion-card-header>
+            <!--ion-card-content class="ion-text-left">
+              <ion-card-title class="ion-margin-bottom"></ion-card-title>
+              <ion-card-subtitle class="ion-text-right"></ion-card-subtitle>
+              <ion-progress-bar value="0.5" color="custom"></ion-progress-bar>
+            </!ion-card-content-->
+          </ion-card>
+        </ion-slide>
+
+        <!--ion-slide>
+          <ion-card>
+            <ion-card-header>
+              <div class="main">
+                <img src="https://www.freeiconspng.com/uploads/google-drive-icon-18.png">
+              </div>
+              <img class="files" src="https://i.ibb.co/jD8ypLq/files.jpg">
+            </ion-card-header>
+            <ion-card-content class="ion-text-left">
+              <ion-card-title class="ion-margin-bottom">Google Drive</ion-card-title>
+              <ion-card-subtitle class="ion-text-right">10/50GB</ion-card-subtitle>
+              <ion-progress-bar value="0.4" color="warning"></ion-progress-bar>
+            </ion-card-content>
+          </ion-card>
+        </!--ion-slide-->
+
+      </ion-slides>
+    </div>
+  </div>
+
+  <ion-card class="cardContent">
+    <div>
+      <div class="gallery2">
+        <ion-img src="../../assets/imgs/logorc_footer.png"></ion-img>
+      </div>
+    </div>
+
+    <div class="containerRc5">
+      <h1>REVOLUCIÓN CIUDADANA</h1>
+      <h2>
+        La Revolución Ciudadana sigue firme y con los mismos sueños que nos impulsaron. Nuestro compromiso como la
+        principal fuerza política del Ecuador es lograr un país más justo y equitativo.
+      </h2>
+    </div>
+
+    <div class="social-media-container">
+      <a data-width="340" data-height="500" class="twitter-timeline"
+        href="https://twitter.com/MashiRafael?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor">Tweets De Rafael Correa</a>
+    </div>
+  </ion-card>
+
+
+  <!-- <ion-card class="cardContent">
+    <div>
+      <div class="gallery2">
+        <ion-img src="../../assets/imgs/logorc_footer.png"></ion-img>
+      </div>
+    </div>
+
+    <div class="containerRc5">
+      <h1>Convención Nacional RC5 </h1>
+      <h2> La Revolución Ciudadana sigue firme y con los mismos sueños que nos impulsaron. Nuestro compromiso como la
+        principal fuerza política del Ecuador es lograr un país más justo y equitativo.
+      </h2>
+    </div>
+
+    <div style="margin: 5%;">
+      <iframe id="youtube" width="100%" height="315" src="https://www.youtube.com/embed/2Pzpx7IdQis" frameborder="0"
+        allowfullscreen></iframe>
+
+    </div>
+  </ion-card> -->
+
+  <!-- <ion-card class="cardContent"> 
+    <div>
+      <div class="gallery2">
+        <ion-img src="../../assets/imgs/logorc_footer.png"></ion-img>
+      </div>
+    </div>
+    <div class="containerRc5">
+      <h1>El Movimiento Revolución Ciudadana (RC5) </h1>
+      <h2> Somos un movimiento político de izquierda progresista. Estamos juntos en esta lucha por los derechos de todos,
+        anhelamos una sociedad menos injusta, con igualdad de oportunidades y libre de violencia
+      </h2>
+    </div>
+  </ion-card> -->
+  
+</ion-content>

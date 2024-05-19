@@ -1,0 +1,182 @@
+<!--<c-header class="mb-4 d-print-none" position="sticky">-->
+<ng-container>
+  <c-container [fluid]="true">
+    <button toggle="visible" cHeaderToggler [cSidebarToggle]="sidebarId" class="ps-1">
+      <svg cIcon name="cilMenu" size="lg"></svg>
+    </button>
+    <c-header-nav class="d-none d-lg-flex me-auto">
+    </c-header-nav>
+    <c-header-nav class="ms-auto">
+      <ng-container *ngTemplateOutlet="userDropdownNotif"></ng-container>
+    </c-header-nav>
+    <c-header-nav class="ms-3">
+      <ng-container *ngTemplateOutlet="userDropdown"></ng-container>
+    </c-header-nav>
+
+  </c-container>
+</ng-container>
+<!--</c-header>-->
+
+<ng-template #userDropdownNotif>
+  <c-dropdown [autoClose]="autoClose" alignment="end" variant="nav-item">
+    <button (click)="cargarNotif()" cButton color="" [caret]="false" cDropdownToggle class="position-relative py-0">
+      <a style="margin: 5px;">
+        <svg cIcon name="cilBell" size="lg" [ngClass]="{'bell': rotateAnimation}"></svg>
+      </a>
+      <c-badge color="danger" position="top-end" shape="rounded-pill">{{total==0 ? '': total}}</c-badge>
+    </button>
+
+    <ul cDropdownMenu [ngStyle]="{'min-width.px': 400 }" class="pt-0 pr-5 w-auto">
+      <c-containet style="display: flex; background-color: #EBEDEF;">
+        <c-row>
+          <c-col md="10">
+            <h6 cDropdownHeader class="bg-light fw-semibold py-2">Notificaciones</h6>
+          </c-col>
+          <c-col md="1">
+            <c-dropdown direction="dropstart" variant="btn-group">
+              <button style="margin-left: 100px; " color="" [caret]="false" cButton cDropdownToggle>
+                <a>
+                  <svg cIcon name="cilOptions" size="lg"></svg>
+                </a>
+              </button>
+              <ul cDropdownMenu>
+                <li><button (click)="marcarLeidasNotify()" cDropdownItem><svg cIcon name="cilCheck" size="md"
+                      style="margin-right: 10px;"></svg>Marcar
+                    todas como leídas</button></li>
+              </ul>
+            </c-dropdown>
+          </c-col>
+        </c-row>
+      </c-containet>
+
+      <div id="container" class="rounded" infiniteScroll [infiniteScrollDistance]=".5" [infiniteScrollThrottle]="150"
+        (scrolled)="onScroll()" [scrollWindow]="false">
+        <div class="content ">
+          <div *ngIf="notifiDataFilter.length > 0 ">
+            <li *ngFor="let item of notifiDataFilter | paginate:{itemsPerPage: tableSize,
+              currentPage: page,
+              totalItems : count,
+              id: 'paginado'
+              } ">
+              <ng-container *ngIf="item.leido == null; else viewRevisar">
+                <a style="text-decoration: none;" (click)="showNotify(item.idblog,item.id_notify,item.leido,item.date)">
+                  <ng-container *ngIf="item.date == 'Revisar Blog'">
+                    <i class="fa fa-list-alt" aria-hidden="true" style="color: blue;margin-right: 3px;"></i>
+                    <span class="userB">{{item.user}} </span><span class="dateB">a publicado un blog.
+                    </span><span class="titleB"> "{{item.blogtitulo}}"</span>
+                    <span class="perfilB"> Asambleista: <span
+                        style="color: black;font-size: 13px; font-weight: normal !important;">
+                        {{item.perfil}}</span></span>
+                  </ng-container>
+
+                  <ng-container *ngIf="item.date == 'Blog Aprobado'|| item.date == 'Blog Rechazado' ">
+                    <i class="fa fa-list-alt" aria-hidden="true" style="color: blue;margin-right: 3px;"></i>
+                    <span class="dateB" style="font-weight: bold;">La publicación del blog.
+                    </span><span class="titleB"> "{{item.blogtitulo }}"</span>
+                  </ng-container>
+                  <div class="d-flex justify-content-between time">
+                    <span>{{item.time}}</span>
+                    <span>
+                      <ng-container *ngIf="item.date == 'Revisar Blog' || item.date == 'Blog Rechazado'; else Success">
+                        <c-badge [color]="item.date == 'Revisar Blog'? warning : danger ">{{item.date}}</c-badge>
+                      </ng-container>
+                      <ng-template #Success>
+                        <c-badge [color]="success">{{item.date}}</c-badge>
+                      </ng-template>
+                    </span>
+                  </div>
+                </a>
+              </ng-container>
+
+              <ng-template #viewRevisar>
+                <a style="text-decoration: none;" (click)="showNotify(item.idblog,item.id_notify,item.leido,item.date)">
+                  <ng-container *ngIf="item.date == 'Revisar Blog'">
+                    <i class="fa fa-list-alt" aria-hidden="true"
+                      style="color: rgb(190, 190, 190);margin-right: 3px;"></i>
+                    <span style="color: rgb(190, 190, 190)">{{item.user}} </span><span
+                      style="color: rgb(190, 190, 190)">a
+                      publicado un blog.
+                    </span><span class="titleB" style="font-size: 15px; color: rgb(190, 190, 190);"> "{{item.blogtitulo}}"</span>
+                    <span style="font-size: 14px; color: rgb(190, 190, 190);"> Asambleista: <span
+                        style="color: rgb(190, 190, 190);font-size: 13px; font-weight: normal !important;">
+                        {{item.perfil}}</span></span>
+                  </ng-container>
+
+                  <ng-container *ngIf="item.date == 'Blog Aprobado' || item.date == 'Blog Rechazado'">
+                    <i class="fa fa-list-alt" aria-hidden="true"
+                      style="color: rgb(190, 190, 190);margin-right: 3px;"></i>
+                    <span style="color: rgb(190, 190, 190)">La publicación del blog.
+                    </span><span class="titleB" style="font-size: 15px; color: rgb(190, 190, 190);"> "{{item.blogtitulo }}"</span>
+                  </ng-container>
+
+                  <div class="d-flex justify-content-between" style="font-size: 12px;
+                  font-weight: bold;
+                  display: flex;
+                  justify-content: flex-start;color: rgb(190, 190, 190)">
+                    <span>{{item.time}}</span>
+                    <span>
+                      <ng-container *ngIf="item.date == 'Revisar Blog' || item.date == 'Blog Rechazado'; else Success">
+                        <c-badge [color]="item.date == 'Revisar Blog'? warning : danger ">{{item.date}}</c-badge>
+                      </ng-container>
+                      <ng-template #Success>
+                        <c-badge [color]="success">{{item.date}}</c-badge>
+                      </ng-template>
+                    </span>
+                  </div>
+                </a>
+              </ng-template>
+            </li>
+          </div>
+
+          <li *ngIf="notifiDataFilter.length == 0">
+            <a cDropdownItem>
+              <svg cIcon class="me-2" name="cilBell"></svg>
+              <span>No hay notificaciones</span> <br>
+            </a>
+          </li>
+          <p *ngIf="notifiDataFilter.length >=  tableSize" cPlaceholderAnimation="glow">
+            <span cBgColor="dark" style="width: 40%; margin-left: 3%;" cPlaceholder></span>
+            <span cBgColor="secondary" style="width: 50%; margin-left: 3%;" cPlaceholder></span>
+            <span cBgColor="secondary" style="width: 50%; margin-left: 3%;" cPlaceholder></span>
+            <span cBgColor="secondary" style="width: 40%; margin-left: 3%;" cPlaceholder></span><br>
+            <span style="width: 20%; margin-left: 3%;" cPlaceholder></span>
+            <span cBgColor="secondary" style="width: 10%; margin-left: 3%;" cPlaceholder></span><br>
+            <span cBgColor="primary" style="width: 10%; margin-left: 3%;" cPlaceholder></span>
+          </p>
+        </div>
+      </div>
+    </ul>
+
+  </c-dropdown>
+</ng-template>
+
+<ng-template #userDropdown>
+  <c-dropdown alignment="end" variant="nav-item">
+    <button cButton color="" [caret]="false" cDropdownToggle class="py-0">
+      <c-avatar cTextColor="primary" shape="rounded-1" size="md" [src]='thumbnail' status="success">
+      </c-avatar>
+    </button>
+    <ul cDropdownMenu class="pt-0 pr-5 w-auto">
+      <li>
+        <h6 cDropdownHeader class="bg-light fw-semibold py-2">Configuración</h6>
+      </li>
+      <li></li>
+      <li>
+        <a routerLink="./profile/config" cDropdownItem>
+          <svg cIcon class="me-2" name="cilUser"></svg>
+          Perfil
+        </a>
+      </li>
+      <li>
+        <hr cDropdownDivider />
+      </li>
+      <li>
+        <a (click)="salir()" cDropdownItem>
+          <svg cIcon class="me-2" name="cilLockLocked"></svg>
+          Cerrar Sesión
+        </a>
+      </li>
+      <li></li>
+    </ul>
+  </c-dropdown>
+</ng-template>

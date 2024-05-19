@@ -1,0 +1,47 @@
+<c-col>
+    <c-card class="mb-4">
+        <c-card-body>
+            <c-nav variant="tabs">
+              <c-nav-item>
+                <a [cTabContent]="tabContent3" [routerLink] [tabPaneIdx]="0" cNavLink>
+                  <svg cIcon class="me-2" name="cilFilter"></svg>
+                  Reporte Nacional
+                </a>
+              </c-nav-item>
+              <c-nav-item>
+                <a [cTabContent]="tabContent3" [routerLink] [tabPaneIdx]="1" cNavLink>
+                  <svg cIcon class="me-2" name="cilFilter"></svg>
+                  Reporte Provincial
+                </a>
+              </c-nav-item>
+              <c-nav-item>
+                <a [cTabContent]="tabContent3" [routerLink] [tabPaneIdx]="2" cNavLink>
+                  <svg cIcon class="me-2" name="cilFilter"></svg>
+                  Reporte Cantonal
+                </a>
+              </c-nav-item>
+            </c-nav>
+            <c-tab-content #tabContent3="cTabContent" cRounded="bottom" [activeTabPaneIdx]="0">
+              <c-tab-pane aria-labelledby="docs-code-preview" class="p-3 preview" role="tabpanel">
+                <div>
+                    This is some placeholder content the <strong>Home</strong> tab's associated content. Clicking another tab
+                    will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the
+                    content visibility and styling. You can use it with tabs, pills, and any other .nav-powered navigation.
+                </div>
+                
+                <button cButton color="primary">Generar reporte</button>
+              </c-tab-pane>
+              <c-tab-pane aria-labelledby="docs-code-preview" class="p-3 preview" role="tabpanel">
+                This is some placeholder content the <strong>Profile</strong> tab's associated content. Clicking another
+                tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the
+                content visibility and styling. You can use it with tabs, pills, and any other .nav-powered navigation.
+              </c-tab-pane>
+              <c-tab-pane aria-labelledby="docs-code-preview" class="p-3 preview" role="tabpanel">
+                This is some placeholder content the <strong>Contact</strong> tab's associated content. Clicking another
+                tab will toggle the visibility of this one for the next. The tab JavaScript swaps classes to control the
+                content visibility and styling. You can use it with tabs, pills, and any other .nav-powered navigation.
+              </c-tab-pane>
+            </c-tab-content>
+          </c-card-body>
+    </c-card>
+</c-col>

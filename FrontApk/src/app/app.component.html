@@ -1,0 +1,60 @@
+<ion-app>
+  <ion-split-pane contentId="main-content">
+    <ion-menu swipeGesture="false" contentId="main-content" type="overlay" menuId="main-menu">
+      <ion-content>
+        <div class="menu-header-bg"></div>
+        <div class="header-content">
+          <img src="../assets/imgs/logo_rc_200px.png" alt="">
+        </div>
+        <!-- <ion-list id="inbox-list">
+          <ion-menu-toggle auto-hide="false">
+            <ion-item  [routerLink]="['inicio']" lines="none" detail="false" routerLinkActive="selected">
+              <ion-icon slot="start" name="home-outline"></ion-icon>
+              <ion-label>Inicio</ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+          
+        </ion-list> -->
+        <!-- {{error}} -->
+        <ion-list id="inbox-list" >
+          <ion-label class="title">Comunicación</ion-label>
+          <ion-menu-toggle auto-hide="false">
+            <ion-item  [routerLink]="['notificaciones']" lines="none" detail="false" routerLinkActive="selected">
+              <ion-icon slot="start" name="notifications-outline"></ion-icon>
+              <ion-label>Notificaciones</ion-label>
+              </ion-item>
+          </ion-menu-toggle>
+          <!-- <ion-menu-toggle auto-hide="false">
+            <ion-item  [routerLink]="['agenda']" lines="none" detail="false" routerLinkActive="selected">
+              <ion-icon slot="start" name="calendar-outline"></ion-icon>
+              <ion-label>Agenda</ion-label>
+            </ion-item>
+          </ion-menu-toggle> -->
+        </ion-list>
+
+        <ion-list id="inbox-list">
+          <ion-label class="title">Redes Sociales</ion-label>
+          <ion-menu-toggle auto-hide="false">
+            <ion-item   routerDirection="root" href="https://www.facebook.com/groups/620252548651632" lines="none" detail="false" routerLinkActive="selected">
+              <ion-icon slot="start" name="logo-facebook"></ion-icon>
+              <ion-label>Facebook</ion-label>
+              </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle auto-hide="false">
+            <ion-item  routerDirection="root" href="https://twitter.com/RC5Oficial" lines="none" detail="false" routerLinkActive="selected">
+              <ion-icon slot="start" name="logo-twitter"></ion-icon>
+              <ion-label>Twitter</ion-label>
+              </ion-item>
+          </ion-menu-toggle>
+          <ion-menu-toggle auto-hide="false">
+            <ion-item   routerDirection="root" [routerLink]="" lines="none" detail="false" routerLinkActive="selected">
+              <ion-icon slot="start" name="logo-instagram"></ion-icon>
+              <ion-label>Instagram</ion-label>
+              </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet id="main-content"></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>

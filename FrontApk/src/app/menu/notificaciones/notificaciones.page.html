@@ -1,0 +1,84 @@
+<ion-header class="ion-no-border" [translucent]="true">
+  <ion-toolbar class="tolbar1">
+    <div class="header-content">
+      <img src="../../assets/imgs/logo_arriba.svg" alt="">
+    </div>
+  </ion-toolbar>
+
+  <div class="contenedor-superpuesto">
+    <ion-toolbar class="tolbar2">
+      <div class="cuadrado-con-texto ">
+        <p>NOTIFICACIONES</p>
+      </div>
+    </ion-toolbar>
+  </div>
+</ion-header>
+
+<!-- <ion-content>
+  <ion-list>
+    <ion-item style="margin-top: 10px;">
+      <ion-button style="margin-inline-end: 15px" slot="start">
+        <ion-icon slot="icon-only"  name="notifications"></ion-icon>
+      </ion-button>
+      <div style="display: flex; flex-direction: column; max-width: 100%;">
+        <ion-label class="titleNotify">Titulo Titulo Titulo Titulo Titulo Titulo Titulo Titulo Titulo Titulo Titulo Titulo </ion-label>
+        <ion-label class="subtitleNotify">Subtitulo</ion-label>
+      </div>
+    </ion-item>
+    <ion-item style="margin-top: 10px;">
+      <ion-button style="margin-inline-end: 15px" slot="start">
+        <ion-icon slot="icon-only"  name="notifications"></ion-icon>
+      </ion-button>
+      <div style="display: flex; flex-direction: column; max-width: 100%;">
+        <ion-label class="titleNotify">Titulo Titulo Titulo Titulo Titulo Titulo Titulo Titulo Titulo Titulo Titulo Titulo </ion-label>
+        <ion-label class="subtitleNotify">Subtitulo</ion-label>
+      </div>
+    </ion-item>
+  </ion-list>
+</ion-content> -->
+
+<ion-content>
+  <ion-list *ngIf="notifyData.length>0 ;else sinRegistro">
+    <ion-item *ngFor="let item of notifyData.slice(0,lim);let index = index" (click)="goInfEdit(item.id,item.id_notify)">
+      <ion-thumbnail slot="start">
+        <img alt="Silhouette of mountains" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+      </ion-thumbnail>
+      <ion-label *ngIf="item.leido != null" class="ion-text-wrap">
+        <h2 class="NotifyTitle" style="color: #c7c7c7 !important;">AQUÍ TIENES '{{item.editorialname}}'</h2>
+        <p style="color: #c7c7c7 !important;">{{item.updated_at}}</p>
+        <p style="color: #c7c7c7 !important;" class="NotifyDescrip">{{item.descripcion}}, con toda la actualidad de la RC5 esta semana</p>
+      </ion-label>
+
+      <ion-label *ngIf="item.leido == null" class="ion-text-wrap">
+        <h2 class="NotifyTitle">AQUÍ TIENES '{{item.editorialname}}'</h2>
+        <p style="font-family: Gotham-Bold; font-size: 12px;">{{item.updated_at}}</p>
+        <p class="NotifyDescrip">{{item.descripcion}}, con toda la actualidad de la RC5 esta semana</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+
+  <ng-template #sinRegistro>
+    <ion-card>
+      <p class="sinRegis">Sin registros</p>
+    </ion-card>
+  </ng-template>
+
+  <ion-infinite-scroll *ngIf="notifyData.length > lim" (ionInfinite)="onIonInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+
+<div class="container">
+  <div (click)="abrirMenu()" class="left-square square">
+    <i class="fas fa-list" style="font-size: 30px;color:#003365"></i>
+  </div>
+  <div [routerLink]="['../iniciov2']" class="circle">
+    <i class="fas fa-home" style="font-size: 50px;color:#003365"></i>
+  </div>
+  <div [routerLink]="['../opcinicv2']"  class="right-square square">
+    <i class="fas fa-reply" style="font-size: 30px;color:#003365"></i>
+  </div>
+  <img class="footer-img" src="../../assets/imgs/footer_curve.png" alt="">
+</div>
+
+

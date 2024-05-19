@@ -1,0 +1,48 @@
+<ion-header class="ion-no-border" [translucent]="true">
+  <ion-toolbar class="tolbar1">
+    <div class="header-content">
+      <img src="../../assets/imgs/logo_arriba.svg" alt="">
+    </div>
+  </ion-toolbar>
+
+  <div class="contenedor-superpuesto">
+    <ion-toolbar class="tolbar2">
+      <div class="cuadrado-con-texto nameAssam">
+        <p>{{lastName}} <br>
+          {{firstName}}</p>
+      </div>
+    </ion-toolbar>
+  </div>
+</ion-header>
+
+
+<ion-content >
+  
+  <ion-card class="cardStyle">
+      <div class="profile-imgBio">
+        <img  class="tamanioBio" [src]="urlGet" alt="" />
+      </div>
+    <div  [innerHTML]="peril" class="contentInnerBiografia" ></div>
+    <section class="buttons">
+      <a [href]="urlfb" style="color: #3B5998;"><i *ngIf="urlfb != null" ><ion-icon name="logo-facebook"></ion-icon></i></a>
+      <a [href]="urltw" style="color: #1DA1F2;"> <i *ngIf="urltw != null"><ion-icon name="logo-twitter"></ion-icon></i></a>
+        <a [href]="urlit" style="color: #E1306C;"><i *ngIf="urlit!= null"><ion-icon name="logo-instagram"></ion-icon></i></a>
+          <a [href]="urlttk" style="color: #69C9D0;"><i *ngIf="urlttk != null"><ion-icon name="logo-tiktok"></ion-icon></i></a>
+    </section>
+  </ion-card>
+ </ion-content>
+
+ <div class="container">
+  <div (click)="abrirMenu()" class="left-square square">
+    <i class="fas fa-list" style="font-size: 30px;color:#003365"></i>
+  </div>
+  <div [routerLink]="['../../iniciov2']" class="circle">
+      <i class="fas fa-home" style="font-size: 50px;color:#003365" ></i>
+  </div>
+  <div (click)="goBack()" class="right-square square">
+    <i class="fas fa-reply" style="font-size: 30px;color:#003365"></i>
+  </div>
+  <img class="footer-img" src="../../assets/imgs/footer_curve.png" alt="">
+</div>
+ 
+

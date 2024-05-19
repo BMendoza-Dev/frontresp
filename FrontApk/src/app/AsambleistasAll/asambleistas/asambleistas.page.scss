@@ -1,0 +1,95 @@
+ion-searchbar.ios{
+  margin-top: 10px;
+}
+
+.title{
+  --color: white;
+  //size: large;
+  text-align: center;
+  font-family: "Gotham-Bold";
+  font-size: 16px;
+  padding: 0px 10px;
+}
+
+h2{
+  text-align: left; 
+  font-weight: bold;
+  font-family: "Gotham-Bold";
+  
+}
+
+h3{
+  text-align: left;
+  font-family: "Gotham-Medium";
+}
+
+p{
+  text-align: left;
+  font-family: "Gotham-Book";
+}
+
+.iconBack{
+  color: black;
+  width: 40px; font-size: 24px;
+}
+
+.search{
+  --icon-color : black;
+}
+
+ion-label h2{
+  font-size: 10.5px;
+  margin-top: 5px; margin-bottom: 0px;
+  color:blue;
+}
+ion-label h3{
+  font-size: 10px;
+  margin-top: 5px; margin-bottom: 0px;
+}
+ion-label p{
+  font-size: 9.5px;
+}
+
+ion-buttons.ios ion-back-button.ios{
+  margin-right: 7px
+}
+
+ion-card.ios {
+  margin: 7px
+}
+
+.sinRegis{
+  font-size: 18px;
+  text-align: center;
+  font-family: "Gotham-Bold";
+}
+
+
+/* Core CSS required for Ionic components to work properly */
+@import '~@ionic/angular/css/core.css';
+
+/* Basic CSS for apps built with Ionic */
+@import '~@ionic/angular/css/normalize.css';
+@import '~@ionic/angular/css/structure.css';
+@import '~@ionic/angular/css/typography.css';
+
+/* Optional CSS utils that can be commented out */
+@import '~@ionic/angular/css/padding.css';
+@import '~@ionic/angular/css/float-elements.css';
+@import '~@ionic/angular/css/text-alignment.css';
+@import '~@ionic/angular/css/text-transformation.css';
+@import '~@ionic/angular/css/flex-utils.css';
+
+/*:root {
+  --ion-color-rose: #fecdd3;
+  --ion-color-rose-rgb: 254,205,211;
+  --ion-color-rose-contrast: #000000;
+  --ion-color-rose-contrast-rgb: 0,0,0;
+  --ion-color-rose-shade: #e0b4ba;
+  --ion-color-rose-tint: #fed2d7;
+}*/
+
+
+
+
+

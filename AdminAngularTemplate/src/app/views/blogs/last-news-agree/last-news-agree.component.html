@@ -1,0 +1,134 @@
+<c-col xs="12">
+  <c-card class="mb-4">
+    <c-card-header>
+      <strong>Categorías de los blogs</strong>
+    </c-card-header>
+    <c-card-body>
+      <select [(ngModel)]="categorie_id" (ngModelChange)="cargarLitBlog(categorie_id)" aria-label="Categoria" cSelect
+        class="mb-2">
+        <option [value]="">Todas las categorías</option>
+        <option *ngFor="let item of listCateg" [ngValue]="item.id">{{item.categorianame}}</option>
+      </select>
+    </c-card-body>
+  </c-card>
+</c-col>
+
+<c-col xs="12">
+  <c-card class="mb-4">
+    <c-card-header>
+      <strong>Listas de blog {{nameCat}}</strong>
+    </c-card-header>
+    <c-card-body>
+      <label cLabel for="basic-url">Título del blog</label>
+      <c-input-group class="mb-3">
+        <input aria-describedby="basic-addon2" aria-label="Este es un título del blog..." cFormControl
+          placeholder="Este es un título del blog..." [(ngModel)]="search" (ngModelChange)="dataPaginate($event)"
+          id="search" name="search" />
+        <span cInputGroupText id="basic-addon2"><svg cIcon class="me-2" name="cilSearch"></svg>Buscar</span>
+      </c-input-group> <br>
+      <c-row [gutter]="4" class="mb-4" [lg]="2" [md]="1" [xs]="1">
+
+        <c-col *ngFor="let item of listBlog | filtroBlogs:search | paginate:{itemsPerPage: tableSize,
+            currentPage: page,
+            totalItems : count,
+            id: 'paginado'
+            }">
+          <c-card *ngIf="item._blogtitulo" class="mb-1">
+            <c-card-header class="text-center">{{item._categorianame}}</c-card-header>
+            <c-card-body>
+              <h5 cCardTitle>{{item._blogtitulo}}</h5>
+              <p cCardText>
+                {{item._blogdescripcion}}
+              </p>
+            </c-card-body>
+            <c-card-footer class="text-medium-emphasis"
+              style="display: flex; justify-content: space-between; align-items: center;">
+              <button (click)="blogGet(item._id)" cButton color="primary" variant="outline">Ver</button>
+              <span style="font-size: 15px;">{{item._updated_at}}</span>
+            </c-card-footer>
+
+          </c-card>
+          <c-alert *ngIf="!item._blogtitulo" color="danger">No existen lista de blogs {{nameCat}}!</c-alert>
+        </c-col>
+      </c-row>
+    </c-card-body>
+
+    <pagination-controls *ngIf="listBlog != '' " previousLabel="Prev" nextLabel="Next"
+      (pageChange)="onTableDataChange($event)" [autoHide]="true" id="paginado">
+    </pagination-controls>
+  </c-card>
+</c-col>
+
+<c-modal backdrop="static" id="staticBackdropModal" size="lg" [visible]="visible"
+  (visibleChange)="handleLiveDemoChange($event)" scrollable> <!--Modal de editar cuenta Asambleista-->
+
+  <c-modal-header>
+    <h5 cModalTitle>Blog {{categoria}}</h5>
+    <button (click)="clear();toggleLiveDemo()" cButtonClose></button>
+  </c-modal-header>
+  <c-modal-body>
+    <div class="container">
+      <img *ngIf="urlGet" [src]="urlGet" alt="Descripción de la imagen">
+    </div>
+    <div style="line-height: 1.5; margin-top: 5px;">
+      <div style="font-size: 20px; color:black; font-weight: bold;">{{blogtitulo}}</div>
+      <div style="font-size: 18px; color:black;">{{blogdescripcion}}</div>
+    </div>
+    <br>
+    <div [innerHTML]="blogcontenido" class="blog"></div>
+    <br>
+    <div *ngIf="pdfs.length != 0" style="font-size: 16px; color: black;">Documentos PDF:</div>
+      <div class="pdf-list">
+        <div class="pdfs-container">
+            <div *ngFor="let pdf of pdfs" class="pdf-item">
+                <a [href]="pdf.pdf" download="{{pdf.name}}">
+                    <i [cTooltip]="pdf.name" class="fas fa-file-pdf fa-2x text-danger"></i>
+                </a>
+            </div>
+        </div>
+    </div>
+  </c-modal-body>
+  <c-modal-footer>
+    <c-col xs="12">
+      <button (click)="accept()" cButton class="me-1" color="success">
+        Aprobar
+      </button>
+      <button (click)="deny()" cButton color="danger" type="reset">
+        Denegar
+      </button>
+    </c-col>
+  </c-modal-footer>
+</c-modal>
+
+<c-modal backdrop="static" id="staticModalDeny" fullscreen="md" [visible]="visibleDeny"
+  (visibleChange)="handleLiveDemoChangeDeny($event)"> <!--Modal de editar cuenta Asambleista-->
+
+  <c-modal-header>
+    <h5 cModalTitle>Motivos</h5>
+    <button (click)="toggleLiveDemo();toggleLiveDemoDeny()" cButtonClose></button>
+  </c-modal-header>
+  <c-modal-body>
+    <form #customStylesForm="ngForm" (ngSubmit)="onSubmit2()" [validated]="customStylesValidated2" cForm>
+      <div class="mb-3">
+        <label cLabel for="tituloValidation">Título del motivo</label>
+        <input [(ngModel)]="motivoTitulo" name="tituloValidation" cFormControl id="tituloValidation" required
+          type="text" value="" />
+      </div>
+      <div class="mb-3">
+        <label cLabel for="motivoValidation">Motivo</label>
+        <textarea [(ngModel)]="motivoText" cFormControl required name="motivoValidation" id="motivoValidation" value=""
+          rows="3"></textarea>
+      </div>
+
+      <c-modal-footer>
+        <button (click)="toggleLiveDemo();toggleLiveDemoDeny()" cButton color="secondary">
+          Cerrar
+        </button>
+        <button cButton class="me-1" type="submit" (click)="denyBlog()" color="primary">Aceptar</button>
+      </c-modal-footer>
+    </form>
+  </c-modal-body>
+
+</c-modal>
+
+<ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "ball-clip-rotate-multiple" [fullScreen] = "true"><p style="color: white" > Cargando... </p></ngx-spinner>

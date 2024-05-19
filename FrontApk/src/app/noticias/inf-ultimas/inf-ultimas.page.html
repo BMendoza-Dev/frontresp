@@ -1,0 +1,71 @@
+<!-- <ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-back-button text="" style="color: white;" defaultHref="/"></ion-back-button>
+    </ion-buttons>
+    <ion-title class="title">REVOLUCIÓN CIUDADANA</ion-title>
+
+  </ion-toolbar> 
+</ion-header> -->
+<ion-header class="ion-no-border" [translucent]="true">
+  <ion-toolbar class="tolbar1">
+    <div class="header-content">
+      <img src="../../assets/imgs/logo_arriba.svg" alt="">
+    </div>
+  </ion-toolbar>
+
+  <div class="contenedor-superpuesto">
+    <ion-toolbar class="tolbar2">
+      <div class="cuadrado-con-texto">
+        <p>ACTULIDAD | NOTICIAS</p>
+      </div>
+    </ion-toolbar>
+  </div>
+</ion-header>
+
+<ion-content>
+  <!-- <div>
+    <p class="title2"> ACTULIDAD | NOTICIAS</p>
+    <div class="linea"></div>
+  </div> -->
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title class="titleCard">{{blogtitulo}}</ion-card-title>
+      <ion-card-subtitle class="subtitleCard">{{blogdescripcion}}</ion-card-subtitle>
+      <div style="margin-top: 10px; font-size: 12px; font-family: Gotham-Book;">{{fecha}}</div>
+    </ion-card-header>
+    <img class="imgPrincipal" style="margin-bottom: 10px;" [src]="imagen" />
+    <em class="tituloImagen">Categoría: {{categorianame}}</em>
+
+    <ion-card-content class="contentCard"> 
+      <div  [innerHTML]="blogcontenido" class="contentInner"></div>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-item (click)="downloadPDF(item.name, item.pdf)"  *ngFor="let item of listPdf" style="--ion-background-color: rgb(224, 224, 224); margin: 2%;">
+      <ion-icon class="iconLoad" name="download-outline" slot="start"></ion-icon>
+      <span class="fechaCard">{{item.name}}</span>
+    </ion-item>
+  </ion-card>
+  <!-- <div>
+    <p class="title2"> REDES SOCIALES</p>
+    <div class="linea"></div>
+  </div> -->
+  <!-- <div class="social-media-container">
+    <iframe src="https://www.facebook.com/plugins/page.php?href=https%3A%2F%2Fwww.facebook.com%2FRevolucion.Ciudadana.Ecuador.RC5&tabs=timeline&width=340&height=500&small_header=false&adapt_container_width=true&hide_cover=false&show_facepile=false&appId" width="340" height="500" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+    <a data-width="340" data-height="500" class="twitter-timeline" href="https://twitter.com/RC5Oficial?ref_src=twsrc%5Etfw">Tweets by RC5Oficial</a>  
+  </div> -->
+</ion-content>
+
+<div class="container">
+  <div (click)="abrirMenu()" class="left-square square">
+    <i class="fas fa-list" style="font-size: 30px;color:#003365"></i>
+  </div>
+  <div [routerLink]="['../iniciov2']" class="circle">
+    <i class="fas fa-home" style="font-size: 50px;color:#003365"></i>
+  </div>
+  <div (click)="goBack()"  class="right-square square">
+    <i class="fas fa-reply" style="font-size: 30px;color:#003365"></i>
+  </div>
+  <img class="footer-img" src="../../assets/imgs/footer_curve.png" alt="">
+</div>

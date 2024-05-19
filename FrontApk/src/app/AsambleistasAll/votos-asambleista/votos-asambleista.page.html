@@ -1,0 +1,74 @@
+<ion-header class="ion-no-border" [translucent]="true">
+  <ion-toolbar class="tolbar1">
+    <div class="header-content">
+      <img src="../../assets/imgs/logo_arriba.svg" alt="">
+    </div>
+  </ion-toolbar>
+
+  <div class="contenedor-superpuesto">
+    <ion-toolbar class="tolbar2">
+      <div class="cuadrado-con-texto ">
+        <p>VOTOS</p>
+      </div>
+    </ion-toolbar>
+  </div>
+</ion-header>
+
+<ion-header>
+  <ion-toolbar>
+    <ion-searchbar class="search" placeholder="Buscar tema" animated (ionChange)="buscar($event)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-card *ngFor="let item of votosFilter.slice(0,lim);let index = index">
+      <ion-card-header *ngIf="item.description != false" class="cardHeader">
+        <ion-card-subtitle class="cardSubTitle">Sesión {{item.sesion}} | {{item.initialDate}}</ion-card-subtitle>
+        <ion-card-title class="cardTitle">{{item.description}}</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content *ngIf="item.description != false" class="cardContentVoto">
+        VOTO: {{item.voto}}
+      </ion-card-content>
+      <ion-card-content *ngIf="item.description == false" class="cardContentVoto">
+        <p class="sinRegis">Sin registro</p>
+      </ion-card-content>
+    </ion-card>
+  </ion-list>
+
+  <ion-infinite-scroll *ngIf="votosFilter.length > lim" (ionInfinite)="onIonInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+<!--ion-content>
+  <ion-card *ngFor="let item of assambly | filtro: textoBuscar">
+    <ion-item (click)="goInfAssam(item.id)">
+      <div style="width: 45px; margin-right: 5px;">
+        <img src="{{item.imagen.changingThisBreaksApplicationSecurity}}" />
+      </div>
+      <ion-label>
+        <h2>{{item.LastFirstName}}</h2>
+        <h3>{{item.territorialDivision}}</h3>
+        <p>Curul {{item.curul}}</p>
+      </ion-label>
+
+    </ion-item>
+  </ion-card>
+
+  
+</ion-content-->
+
+
+<div class="container">
+  <div (click)="abrirMenu()" class="left-square square">
+    <i class="fas fa-list" style="font-size: 30px;color:#003365"></i>
+  </div>
+  <div [routerLink]="['../../iniciov2']" class="circle">
+    <i class="fas fa-home" style="font-size: 50px;color:#003365"></i>
+  </div>
+  <div (click)="goBack()" class="right-square square">
+    <i class="fas fa-reply" style="font-size: 30px;color:#003365"></i>
+  </div>
+  <img class="footer-img" src="../../assets/imgs/footer_curve.png" alt="">
+</div>

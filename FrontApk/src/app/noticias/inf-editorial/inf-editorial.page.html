@@ -1,0 +1,65 @@
+<ion-header class="ion-no-border" [translucent]="true">
+  <ion-toolbar class="tolbar1">
+    <div class="header-content">
+      <img src="../../assets/imgs/logo_arriba.svg" alt="">
+    </div>
+  </ion-toolbar>
+
+  <div class="contenedor-superpuesto">
+    <ion-toolbar class="tolbar2">
+      <div class="cuadrado-con-texto ">
+        <p>EDITORIALES</p>
+      </div>
+    </ion-toolbar>
+  </div>
+</ion-header>
+
+<ion-content>
+  <div *ngIf="blogEditorial.length>0 ;else sinRegistro">
+    <p class="title2"> {{titleEdit}} </p>
+    <div class="linea"></div>
+
+    <ion-card *ngFor="let item of blogEditorial.slice(0,lim);let index = index" (click)="goInfBlog(item.id)">
+      <!-- <img  src="{{item.imagen.changingThisBreaksApplicationSecurity}}" /> -->
+      <ion-card-header >
+        <div class="container">
+          <a class="users">
+            <div class="container-username">
+              <span class="header-username">{{item.name}}</span>
+              <span class="cargoAsambl">{{item.jurisdiction}}</span>
+            </div>
+          </a>
+        </div>
+        <ion-card-title class="titleCard"> {{item.blogtitulo}} </ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content class="contentCard">
+        {{item.blogdescripcion}}
+      </ion-card-content>
+    </ion-card>
+  </div>
+
+  <ng-template #sinRegistro>
+    <ion-card>
+      <p class="sinRegis">Sin registros</p>
+    </ion-card>
+  </ng-template>
+  
+
+  <ion-infinite-scroll *ngIf="blogEditorial.length > lim" (ionInfinite)="onIonInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>
+
+<div class="container">
+  <div (click)="abrirMenu()" class="left-square square">
+    <i class="fas fa-list" style="font-size: 30px;color:#003365"></i>
+  </div>
+  <div [routerLink]="['../../iniciov2']" class="circle">
+    <i class="fas fa-home" style="font-size: 50px;color:#003365"></i>
+  </div>
+  <div [routerLink]="['../../notificaciones']" class="right-square square">
+    <i class="fas fa-reply" style="font-size: 30px;color:#003365"></i>
+  </div>
+  <img class="footer-img" src="../../assets/imgs/footer_curve.png" alt="">
+</div>

@@ -1,0 +1,47 @@
+<ion-content>
+  <ion-refresher slot="fixed" (ionRefresh)="handleRefresh($event)">
+    <ion-refresher-content pullingIcon="chevron-down-circle-outline" pullingText="Refrescar"
+      refreshingSpinner="circles">
+    </ion-refresher-content>
+  </ion-refresher>
+
+  <div *ngIf="editorialList.length>0 ;else sinRegistro">
+    <div *ngFor="let item of editorialList.slice(0,lim);let index = index" (click)="goInfEdit(item.id)">
+      <p class="title2"> {{item.editorialname}} </p>
+      <div class="linea"></div>
+      <ion-card *ngFor="let itemBlogs of item.blogs">
+        <img src="{{itemBlogs.imagen.changingThisBreaksApplicationSecurity}}" />
+        <ion-card-header>
+          <div class="container">
+            <a class="users">
+              <div class="container-username">
+                <span class="header-username"> {{itemBlogs.name}} </span>
+                <span class="cargoAsambl">{{itemBlogs.jurisdiction}}</span>
+              </div>
+            </a>
+          </div>
+          <ion-card-title class="titleCard">
+            {{itemBlogs.blogtitulo}}
+          </ion-card-title>
+        </ion-card-header>
+  
+        <ion-card-content class="contentCard">
+          {{itemBlogs.blogdescripcion}}
+        </ion-card-content>
+      </ion-card>
+      <div style="background-color: #f9f9f9;">
+        <div style="margin-top: 30px; " class="lineaSepardor"></div>
+      </div>
+    </div>
+  </div>
+
+  <ng-template #sinRegistro>
+    <ion-card>
+      <p class="sinRegis">Sin registros</p>
+    </ion-card>
+  </ng-template>
+
+  <ion-infinite-scroll *ngIf="editorialList.length > lim" (ionInfinite)="onIonInfinite($event)">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

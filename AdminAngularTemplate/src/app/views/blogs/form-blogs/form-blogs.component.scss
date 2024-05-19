@@ -1,0 +1,138 @@
+  .hint {
+      font-size: 14px;
+      margin-top: 5px;
+      margin-bottom: 0;
+      color: #999;
+  }
+
+  .hint.end {
+      text-align: right;
+  }
+
+  #message-length {
+      font-weight: bold;
+  }
+
+  .is-required {
+      margin-left: 2px;
+      color: red;
+      font-weight: bold;
+  }
+
+  .file-input {
+    position: relative;
+    margin-bottom: 2%;
+  }
+  
+  .file-input input[type="file"] {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+  }
+  
+  .file-input label {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+    background-color: #f2f2f2;
+    color: #333;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+  
+  .file-input label span {
+    margin-right: 10px;
+  }
+  
+  .file-input label svg {
+    width: 20px;
+    height: 20px;
+    fill: #333;
+  }
+
+  .container {
+    max-width: 600px;
+    margin: 0 auto;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  
+  img {
+    max-width: 100%;
+    height: auto;
+    max-height: 300px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Aplica una sombra suave a la imagen */
+    border-radius: 5px; /* Agrega una esquina redondeada a la imagen */
+    transition: transform 0.3s ease-in-out; /* Agrega una transición suave al transformar la imagen */
+  }
+  
+  img:hover {
+    transform: scale(1.1); /* Escala la imagen ligeramente al pasar el cursor sobre ella */
+  }
+
+  .file-upload-label {
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.file-upload-label:hover {
+    background-color: #f5f5f5;
+}
+
+.file-upload-label input[type="file"] {
+    display: none;
+}
+
+
+.fa-file-pdf {
+    font-size: 2rem;
+    margin-right: 10px;
+}
+
+.pdf-list {
+  display: flex;
+  align-items: center;
+}
+
+.pdfs-container {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: 10px;
+}
+
+.pdf-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 20px;
+  position: relative; /* Añadir posicionamiento relativo al elemento contenedor */
+}
+
+.remove-btn {
+  position: absolute;
+  top: -10px;
+  right: -10px; /* Añadir posicionamiento absoluto en relación con el elemento hermano */
+  background-color: transparent;
+  border: none;
+  color: #f44336;
+  font-size: 20px;
+  cursor: pointer;
+  transition: color 0.3s ease-in-out;
+}
+
+.remove-btn:hover {
+  color: #ff6b6b;
+}
+
+  
