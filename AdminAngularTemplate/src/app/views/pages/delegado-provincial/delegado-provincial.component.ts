@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { FiltroReporteService } from 'src/app/servicios/filtro-reporte.service';
 import Swal from 'sweetalert2';
+import {Title} from '@angular/platform-browser'
 
 @Component({
   selector: 'app-delegado-provincial',
@@ -25,7 +26,9 @@ export class DelegadoProvincialComponent {
  extrangero = false;
  valsinadherente = false
  errorCedula = false 
-  constructor(private filtroAderente:FiltroReporteService) { }
+  constructor(private filtroAderente:FiltroReporteService, private titulo:Title) { 
+    titulo.setTitle("Sistema de Consulta de Delegados 2024");
+  }
 
   ngOnInit(): void {
     
@@ -53,14 +56,25 @@ export class DelegadoProvincialComponent {
       this.imgLoading=true
       this.loading = true
       setTimeout(() => {
-        this.filtroAderente.filterCedulaDelegados(this.selectProvincia,value).subscribe({
+        this.filtroAderente.getNombreSRI(value).then((data:any) => {
+          if(data['code']=="422"){
+            
+            this.pertenece = false;
+            this.sinadherente = data['message']
+            this.loading = false;
+          }else{
+            this.filtroAderente.filterCedulaDelegados(this.selectProvincia,value).subscribe({
           next:(result: any) => { 
-            debugger
+            
             if(result['message']){
-              debugger
+              
               this.sinadherente = result['message'];
+              if(result['code']=="200"){
+                this.pertenece = true
+              }else{
+                this.pertenece = false
+              }
               this.valsinadherente = true;
-              this.pertenece = true
               // this.cedula = value;
                   this.loading = false;
               // this.filtroAderente.getNombreSRI(value)
@@ -79,7 +93,7 @@ export class DelegadoProvincialComponent {
               //   }
               // })
               // .then((data:any) => {
-              //   debugger
+              //   
               //     this.nombres = data.nombre;
               //       this.cedula = value;
               //       this.loading = false;
@@ -100,7 +114,6 @@ export class DelegadoProvincialComponent {
               this.loading = false;
             }
             this.filtroAderente.datosComplementarios(value).then((data:any) => {
-              console.log(data);
               let codProvincia = data[0].cod_provincia;
               if(codProvincia == 26 || codProvincia == 27 || codProvincia == 28){
                 this.pais = "Extranjero"
@@ -115,7 +128,6 @@ export class DelegadoProvincialComponent {
                
             })
           },error:error => {
-            console.log(error); 
             this.loading = false;
                   this.valsinadherente = true;
                   this.imgLoading = false
@@ -123,7 +135,11 @@ export class DelegadoProvincialComponent {
                   this.sinadherente = "Error del sistema"
                   this.error = error.message;
           }
+            })
+          }
         })
+
+        
       }, 1000);
     }
   }

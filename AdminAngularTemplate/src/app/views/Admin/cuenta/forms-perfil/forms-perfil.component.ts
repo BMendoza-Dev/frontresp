@@ -62,7 +62,6 @@ export class FormsPerfilComponent implements OnInit {
       'email':this.simpleForm.value.email,
       'territorialDivision':this.simpleForm.value.territorialDivision,
     }
-    console.log(datos)
   }
 
   eliminar(_id: any) {}

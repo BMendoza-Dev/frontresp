@@ -44,7 +44,7 @@ export class AdherentesComponent {
       setTimeout(() => {
         this.filtroAderente.filterCedula(value).subscribe({
           next:(result: any) => { 
-            debugger
+            
             if(result['mensaje']){
               this.sinadherente = result['mensaje'];
               this.valsinadherente = true;
@@ -64,10 +64,20 @@ export class AdherentesComponent {
               //   }
               // })
               .then((data:any) => {
-                debugger
+                
+                if(data['code'] == "422"){
+                  this.loading = false;
+                    this.valsinadherente = true;
+                    this.imgLoading = false
+                    this.errorCedula = true;
+                    this.sinadherente = "Numero de cédula incorrecto"
+                    // this.error = error.message;
+                }else{
                   this.nombres = data.nombre;
-                    this.cedula = value;
-                    this.loading = false;
+                  this.cedula = value;
+                  this.loading = false;
+                }
+                 
               }).catch((error:any)=> {
                 this.loading = false;
                     this.valsinadherente = true;
@@ -85,7 +95,6 @@ export class AdherentesComponent {
               this.loading = false;
             }
             this.filtroAderente.datosComplementarios(value).then((data:any) => {
-              console.log(data);
               let codProvincia = data[0].cod_provincia;
               if(codProvincia == 26 || codProvincia == 27 || codProvincia == 28){
                 this.pais = "Extranjero"
@@ -100,7 +109,6 @@ export class AdherentesComponent {
                
             })
           },error:error => {
-            console.log(error); 
             this.loading = false;
                   this.valsinadherente = true;
                   this.imgLoading = false
