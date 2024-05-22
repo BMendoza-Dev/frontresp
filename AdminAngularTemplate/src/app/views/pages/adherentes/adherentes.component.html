@@ -45,7 +45,7 @@
                         
                         <!-- Agrega un mensaje de error para la validación de longitud mínima -->
                     </form>
-                    <label *ngIf="errorCedula == true" cLabel class="sinadherente">{{sinadherente}}</label>
+                    <!-- <label *ngIf="errorCedula == true" cLabel class="sinadherente">{{sinadherente}}</label> -->
                     <c-card *ngIf="imgLoading == false" style="margin-top: 10%;">
                         <img src="https://yosoyrc5.com/rc5.png" alt="">
                     </c-card>
@@ -76,8 +76,9 @@
           class="needs-validation"
         >
       <c-col [md]="12" style="text-align: center;">
-        <label  *ngIf="valsinadherente == false" cLabel class="adherente">{{nombres}} CON CI: {{cedula}} {{adherente.length < 10 ? 'ES SOLO' : 'ES'}} {{adherente}} DE LA REVOLUCIÓN CIUDADANA</label>
-        <label *ngIf="valsinadherente == true" cLabel class="sinadherente">{{sinadherente}}</label>
+        <label  *ngIf="valsinadherente == true && errorCedula == false" cLabel class="adherente">{{datosAdherente.nombre}} CON CI: {{datosAdherente.cedula}} {{datosAdherente.tipo.length < 10 ? 'ES SOLO' : 'ES'}} {{datosAdherente.tipo}} DE LA REVOLUCIÓN CIUDADANA</label>
+        <label *ngIf="valsinadherente == false && errorCedula == false" cLabel class="sinadherente">{{notAdherente}}</label>
+        <label *ngIf="errorCedula == true" cLabel class="sinadherente">{{errorCedulaText}}</label>
     </c-col>
           
           
