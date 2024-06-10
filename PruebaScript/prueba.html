@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Request with Bearer Token</title>
+</head>
+<body>
+    <h1>API Request with Bearer Token</h1>
+    <button id="downloadBtn" style="display:none;">Download JSON</button>
+    <div id="output"></div>
+
+    <script>
+        // Token de autenticación Bearer para la API de voluntarios
+        const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJyb2xlIjoiYWRtaW5fdm9sdW50YXJpb3MifQ.hSXyGWuW2QKDKf8OG-pXY5yyDwacFFnz-75k8uluWYg';
+
+        // URLs de las APIs
+        const apiUrls = {
+            voluntarios: 'https://rc5ec.com/api/voluntarios',
+            zonas: 'https://rc5ec.com/api/zonas',
+            recintos: 'https://rc5ec.com/api/recintos',
+            jrv: 'https://rc5ec.com/api/jrv',
+            parroquias: 'https://rc5ec.com/api/parroquias',
+            cantones: 'https://rc5ec.com/api/cantones',
+            distritos: 'https://rc5ec.com/api/distritos',
+            provincias: 'https://rc5ec.com/api/provincias',
+            paises: 'https://rc5ec.com/api/paises'
+        };
+
+        // Encabezados de la solicitud para la API de voluntarios
+        const headers = new Headers({
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+        });
+
+        // Función para realizar solicitudes a las APIs
+        const fetchData = async (url, useToken = false) => {
+            const options = useToken ? { headers } : {};
+            const response = await fetch(url, options);
+            if (!response.ok) {
+                throw new Error(`HTTP error! status: ${response.status}`);
+            }
+            return response.json();
+        };
+
+        // Función principal para obtener y combinar los datos
+        const getData = async () => {
+            try {
+                // Realizar solicitudes a todas las APIs
+                const [
+                    voluntarios,
+                    zonas,
+                    recintos,
+                    jrv,
+                    parroquias,
+                    cantones,
+                    distritos,
+                    provincias,
+                    paises
+                ] = await Promise.all([
+                    fetchData(apiUrls.voluntarios, true), // API de voluntarios usa token
+                    fetchData(apiUrls.zonas),
+                    fetchData(apiUrls.recintos),
+                    fetchData(apiUrls.jrv),
+                    fetchData(apiUrls.parroquias),
+                    fetchData(apiUrls.cantones),
+                    fetchData(apiUrls.distritos),
+                    fetchData(apiUrls.provincias),
+                    fetchData(apiUrls.paises)
+                ]);
+
+                // Convertir arrays de datos en objetos para fácil acceso por ID
+                const zonasMap = Object.fromEntries(zonas.map(item => [item.id, item.zona]));
+                const recintosMap = Object.fromEntries(recintos.map(item => [item.id, item.recinto]));
+                const jrvMap = Object.fromEntries(jrv.map(item => [item.id, item.genero]));
+                const parroquiasMap = Object.fromEntries(parroquias.map(item => [item.id, item.parroquia]));
+                const cantonesMap = Object.fromEntries(cantones.map(item => [item.id, item.canton]));
+                const distritosMap = Object.fromEntries(distritos.map(item => [item.id, item.distrito]));
+                const provinciasMap = Object.fromEntries(provincias.map(item => [item.id, item.provincia]));
+                const paisesMap = Object.fromEntries(paises.map(item => [item.id, item.pais]));
+
+                // Reemplazar IDs con nombres en los datos de voluntarios
+                const replacedData = voluntarios.map(voluntario => ({
+                    ...voluntario,
+                    pais: paisesMap[voluntario.idpais] || voluntario.idpais,
+                    provincia: provinciasMap[voluntario.idprovincia] || voluntario.idprovincia,
+                    canton: cantonesMap[voluntario.idcanton] || voluntario.idcanton,
+                    parroquia: parroquiasMap[voluntario.idparroquia] || voluntario.idparroquia,
+                    zona: zonasMap[voluntario.idzona] || voluntario.idzona,
+                    recinto: recintosMap[voluntario.idrecinto] || voluntario.idrecinto
+                }));
+
+                // Mostrar los datos en el div con id "output"
+                const output = document.getElementById('output');
+                output.textContent = JSON.stringify(replacedData, null, 2);
+
+                // Habilitar el botón de descarga
+                const downloadBtn = document.getElementById('downloadBtn');
+                downloadBtn.style.display = 'block';
+
+                // Descargar los datos JSON en un archivo de texto
+                downloadBtn.addEventListener('click', () => {
+                    const blob = new Blob([JSON.stringify(replacedData, null, 2)], { type: 'application/json' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'data.json';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                });
+
+            } catch (error) {
+                // Manejar errores
+                const output = document.getElementById('output');
+                output.textContent = `Error: ${error.message}`;
+            }
+        };
+
+        // Llamar a la función para obtener los datos
+        getData();
+    </script>
+</body>
+</html>
