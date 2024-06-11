@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { FiltroReporteService } from 'src/app/servicios/filtro-reporte.service';
 import Swal from 'sweetalert2';
 @Component({
@@ -8,7 +7,6 @@ import Swal from 'sweetalert2';
   styleUrls: ['./adherentes.component.scss']
 })
 export class AdherentesComponent {
-  cedulaControl: FormControl;
   imgLoading=false;
   notAdherente:string
  loading = false;

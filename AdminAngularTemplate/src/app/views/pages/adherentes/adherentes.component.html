@@ -7,7 +7,7 @@
       <c-col md="12" class="d-flex justify-content-center">
         <c-card-group >
           <c-card style="background-color: #133962;" class="text-center">
-            <h1 style="color: white; margin-top: 5px;">SISTEMA DE CONSULTA DE ADHERENTES 2024</h1>
+            <h1 style="color: white; margin-top: 5px;">SISTEMA DE REGISTRO DE ADHERENTES 2024</h1>
           </c-card> 
         </c-card-group>
       </c-col>
@@ -27,7 +27,7 @@
           <div>{{error}}</div>
           <c-card style="background-color: #133962;" class="text-white p-3">
             <c-card-body >
-                    <form cForm>
+                    <form cForm style="margin-bottom: 10px;">
                         <c-row class="align-items-center">
                             <c-col >
                                 <label cLabel="col" for="inputPassword"> Número de cédula </label>
@@ -77,66 +77,62 @@
           cForm row
           class="needs-validation"
         >
-      <c-col [md]="12" style="text-align: center;">
+      <c-col [md]="12" style="text-align: center; margin-bottom: 10px;">
         <label  *ngIf="valsinadherente == true && errorCedula == false" cLabel class="adherente">{{datosAdherente.nombre}} CON CI: {{datosAdherente.cedula}} {{datosAdherente.tipo.length < 10 ? 'ES SOLO' : 'ES'}} {{datosAdherente.tipo}} DE LA REVOLUCIÓN CIUDADANA</label>
         <label *ngIf="valsinadherente == false && errorCedula == false" cLabel class="sinadherente">{{notAdherente}}</label>
         <label *ngIf="errorCedula == true" cLabel class="sinadherente">{{errorCedulaText}}</label>
-    </c-col>
-          
-          
-          <!-- <div>
-            <c-col [md]="12">
-              <label cLabel for="validationCustom01" >Nombres y apellidos: <span class="is-required">*</span></label>
+      </c-col>
+          <div *ngIf="errorCedula == false || valsinadherente == true">
+            <c-col style="margin-bottom: 0.5rem;" [md]="12">
+              <label style="margin-bottom: 0px;" cLabel for="validationCustom01" >Nombres y apellidos: <span class="is-required">*</span></label>
               <input cFormControl name="validationCustom02" id="validationCustom02" required [(ngModel)]="nombres" type="text"  disabled />
             </c-col>
-            <c-col [md]="12">
-              <label cLabel for="validationCustom03" >País:<span class="is-required">*</span></label>
+            <c-col class="contentInputLabel" [md]="12">
+              <label class="contentLabel" cLabel for="validationCustom03" >País:<span class="is-required">*</span></label>
               <input cFormControl name="validationCustom03" id="validationCustom03" required [(ngModel)]="pais" type="text"  disabled />
             </c-col>
-            <c-col [md]="12">
-              <label cLabel for="validationCustom04" >{{extrangero ? 'Circunscripción':'Provincia:'}}<span class="is-required">*</span></label>
+            <c-col class="contentInputLabel" [md]="12">
+              <label class="contentLabel" cLabel for="validationCustom04" >{{extrangero ? 'Circunscripción':'Provincia:'}}<span class="is-required">*</span></label>
               <input cFormControl name="validationCustom04" id="validationCustom04" required [(ngModel)]="provincia" type="text"  disabled />
             </c-col>
-            <c-col [md]="12">
-              <label cLabel for="validationCustom05" >{{extrangero ? 'País de circunscripción':'Cantón:'}}<span class="is-required">*</span></label>
+            <c-col class="contentInputLabel" [md]="12">
+              <label class="contentLabel" cLabel for="validationCustom05" >{{extrangero ? 'País de circunscripción':'Cantón:'}}<span class="is-required">*</span></label>
               <input cFormControl name="validationCustom05" id="validationCustom05" required [(ngModel)]="canton" type="text"  disabled />
             </c-col>
-            <c-col [md]="12">
-              <label cLabel for="validationCustom06" >{{extrangero ? 'Centro electoral':'Parroquia:'}}<span class="is-required">*</span></label>
+            <c-col class="contentInputLabel" [md]="12">
+              <label class="contentLabel" cLabel for="validationCustom06" >{{extrangero ? 'Centro electoral':'Parroquia:'}}<span class="is-required">*</span></label>
               <input cFormControl name="validationCustom06" id="validationCustom06" required  [(ngModel)]="parroquia" type="text"  disabled />
             </c-col>
-            <c-col [md]="12">
-              <label cLabel for="validationCustom07" >Teléfono celular: <span class="is-required">*</span></label>
+            <c-col class="contentInputLabel" [md]="12">
+              <label class="contentLabel" cLabel for="validationCustom07" >Teléfono celular: <span class="is-required">*</span></label>
               <input cFormControl name="validationCustom07" id="validationCustom07" required  type="text"  />
             </c-col>
-            <c-col [md]="12">
-              <label cLabel for="validationCustom08" >Correo electrónico: <span class="is-required">*</span></label>
+            <c-col class="contentInputLabel" [md]="12">
+              <label class="contentLabel" cLabel for="validationCustom08" >Correo electrónico: <span class="is-required">*</span></label>
               <input cFormControl name="validationCustom08" id="validationCustom08" required  type="text"  />
             </c-col>
-            <c-col [md]="12">
-              <label cLabel for="validationCustom09" >Cuenta X (twitter): </label>
+            <c-col class="contentInputLabel" [md]="12">
+              <label class="contentLabel" cLabel for="validationCustom09" >Cuenta X (twitter): </label>
               <input cFormControl name="validationCustom09" id="validationCustom09" required  type="text"  />
             </c-col>
-            <c-col [md]="12">
-              <label cLabel for="validationCustom10" >Cuenta Facebook: </label>
+            <c-col class="contentInputLabel" [md]="12">
+              <label class="contentLabel" cLabel for="validationCustom10" >Cuenta Facebook: </label>
               <input cFormControl name="validationCustom10" id="validationCustom10" required  type="text"  />
             </c-col>
-            <c-col [md]="12">
-              <label cLabel for="validationCustom11" >Cuenta TikTok: </label>
+            <c-col class="contentInputLabel" [md]="12">
+              <label class="contentLabel" cLabel for="validationCustom11" >Cuenta TikTok: </label>
               <input cFormControl name="validationCustom11" id="validationCustom11" required  type="text"  />
             </c-col>
-            <c-col [md]="12">
-              <label cLabel for="validationCustom12" >Cuenta en Instagram: </label>
+            <c-col class="contentInputLabel" [md]="12">
+              <label class="contentLabel" cLabel for="validationCustom12" >Cuenta en Instagram: </label>
               <input cFormControl name="validationCustom12" id="validationCustom12" required  type="text"  />
             </c-col>
             <c-col [md]="12" style="text-align: center;">
-              <button style="width: 120px;" cButton color="success" variant="outline" (click)="enviar()">Ingresar</button>
+              <button style="width: 120px;" cButton color="success" variant="outline" (click)="enviar()">Registrar</button>
             </c-col>
-          </div> -->
-          </form>
           </div>
-          
-          
+        </form>
+      </div>
     </div>
             </c-card-body>
           </c-card>
