@@ -1,5 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
+
 @Injectable({
   providedIn: 'root'
 })
@@ -15,6 +17,11 @@ export class FiltroReporteService {
 
   filterCedula(cedula:any){
     let url = this.url + 'consultarAdherentePermanente?cedula=' + cedula;
+    return this.http.get(url);
+  }
+
+  datosExtras(cedula:any){
+    let url = 'https://yosoyrc5.com/api/padron2023?cedula=eq.'+cedula;
     return this.http.get(url);
   }
 
