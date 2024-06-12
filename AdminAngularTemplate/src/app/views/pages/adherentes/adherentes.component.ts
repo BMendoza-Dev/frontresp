@@ -8,10 +8,10 @@ export interface datosApis {
   cod_provincia:number;
   cod_zona:number;
   junta:number;
-  nom_canton:string;
+  nom_canton?:string;
   nom_padron:string;
-  nom_parroquia:string;
-  nom_provincia:string;
+  nom_parroquia?:string;
+  nom_provincia?:string;
   nom_recinto:string;
   nom_zona:string;
   sexo:string;
@@ -52,6 +52,7 @@ export class AdherentesComponent {
 
   error="";
   datosApi:datosApis;
+  register = false;
   checkInputLength(event: Event) {
     this.errorCedula = false
     this.imgLoading = false
@@ -63,22 +64,22 @@ export class AdherentesComponent {
       this.filtroAderente.filterCedula(value).subscribe({
         next:(res:any) => {
           debugger
-          if(res['mensaje']){
-            this.filtroAderente.datosExtras(value).subscribe({
-              next:(res:any) => {
-                console.log(res[0]);
+          if(res['error']){
+                console.log(res['data']);
                 debugger
-                this.datosApi = res[0];
+                this.datosApi = res['data'];
                 this.valsinadherente = false;
                 this.loading = false;
                 this.imgLoading = true;
-                this.notAdherente = ""+this.datosApi.nom_padron +" CON CI: "+value+" NO PERTENECE A UN ADHERENTE O ADHERENTE PERMANENTE DE LA REVOLUCIÓN CIUDADANA LISTA 5";
-              },error:e => {
-                console.log(e);
-              }
-            })
-          }else if(res['']){
-
+                this.notAdherente = res['mensaje'];
+                this.register = true
+          }else if(res['code']){
+            this.valsinadherente = true;
+            this.datosAdherente = res;
+            this.loading = false;
+            this.imgLoading = true;
+            this.errorCedula = false;
+            this.register = false
           }
         },error:e => {
           console.log(e);

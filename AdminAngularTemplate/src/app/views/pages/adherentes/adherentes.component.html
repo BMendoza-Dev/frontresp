@@ -24,11 +24,14 @@
               </div>
             </c-card-body>
           </c-card>
-          <div>{{error}}</div>
-          <c-card style="background-color: #133962;" class="text-white p-3">
+          <c-card style="background-color: #133962;" class="text-white">
             <c-card-body >
                     <form cForm style="margin-bottom: 10px;">
                         <c-row class="align-items-center">
+                          <c-col *ngIf="loading == false && imgLoading == true" [md]="12" style="text-align: center; margin-bottom: 10px;">
+                            <label *ngIf="valsinadherente == false && errorCedula == false" cLabel class="sinadherente">{{notAdherente}}</label>
+                            <label *ngIf="errorCedula == true" cLabel class="sinadherente">{{errorCedulaText}}</label>
+                          </c-col>
                             <c-col >
                                 <label cLabel="col" for="inputPassword"> Número de cédula </label>
                             </c-col>
@@ -77,12 +80,10 @@
           cForm row
           class="needs-validation"
         >
-      <c-col [md]="12" style="text-align: center; margin-bottom: 10px;">
-        <label  *ngIf="valsinadherente == true && errorCedula == false" cLabel class="adherente">{{datosAdherente.nombre}} CON CI: {{datosAdherente.cedula}} {{datosAdherente.tipo.length < 10 ? 'ES SOLO' : 'ES'}} {{datosAdherente.tipo}} DE LA REVOLUCIÓN CIUDADANA</label>
-        <label *ngIf="valsinadherente == false && errorCedula == false" cLabel class="sinadherente">{{notAdherente}}</label>
-        <label *ngIf="errorCedula == true" cLabel class="sinadherente">{{errorCedulaText}}</label>
-      </c-col>
-          <div *ngIf="errorCedula == false || valsinadherente == true">
+        <c-col [md]="12" style="text-align: center; margin-bottom: 10px;">
+          <label  *ngIf="valsinadherente == true && errorCedula == false" cLabel class="adherente">{{datosAdherente.nombre}} CON CI: {{datosAdherente.cedula}} {{datosAdherente.tipo.length < 10 ? 'ES SOLO' : 'ES'}} {{datosAdherente.tipo}} DE LA REVOLUCIÓN CIUDADANA</label>
+        </c-col>
+          <div *ngIf="register==true">
             <c-col class="contentInputLabel" [md]="12">
               <label class="contentLabel" cLabel for="validationCustom04" >Nombres y Apellidos<span class="is-required">*</span></label>
               <input style="font-weight: bold;" cFormControl name="validationCustom04" id="validationCustom04" required [placeholder]="datosApi.nom_padron" type="text"  disabled />

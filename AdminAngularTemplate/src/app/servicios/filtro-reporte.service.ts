@@ -16,7 +16,7 @@ export class FiltroReporteService {
   }
 
   filterCedula(cedula:any){
-    let url = this.url + 'consultarAdherentePermanente?cedula=' + cedula;
+    let url = this.url + 'consultarAdherenteEnPadron?cedula=' + cedula;
     return this.http.get(url);
   }
 
