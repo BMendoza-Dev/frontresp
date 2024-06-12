@@ -1,5 +1,4 @@
 <!-- <div style="background-image: url('https://www.themarginalian.org/wp-content/themes/brainpickings/images/bckgd_body.png')"  -->
-
 <div style="background-image: url('../../../../assets/img/rc5poderdelagente.png')" 
   class="bg-light min-vh-100 d-flex flex-row align-items-center">
   <c-container>
@@ -83,26 +82,49 @@
         <c-col [md]="12" style="text-align: center; margin-bottom: 10px;">
           <label  *ngIf="valsinadherente == true && errorCedula == false" cLabel class="adherente">{{datosAdherente.nombre}} CON CI: {{datosAdherente.cedula}} {{datosAdherente.tipo.length < 10 ? 'ES SOLO' : 'ES'}} {{datosAdherente.tipo}} DE LA REVOLUCIÓN CIUDADANA</label>
         </c-col>
-          <div *ngIf="register==true">
+
+        <c-col [md]="12" style="text-align: center; margin-bottom: 10px;">
+          <label  *ngIf="errorCedula == true" cLabel class="adherente">{{errorCedulaText}}</label>
+        </c-col>
+
+
+          <div *ngIf="register==true || registerFull == true">
             <c-col class="contentInputLabel" [md]="12">
               <label class="contentLabel" cLabel for="validationCustom04" >Nombres y Apellidos<span class="is-required">*</span></label>
-              <input style="font-weight: bold;" cFormControl name="validationCustom04" id="validationCustom04" required [placeholder]="datosApi.nom_padron" type="text"  disabled />
+              <input *ngIf="register == true" style="font-weight: bold;" cFormControl name="validationCustom04" id="validationCustom04" required [placeholder]="datosApi.nom_padron" type="text"  disabled />
+              <input *ngIf="registerFull == true" style="font-weight: bold;" cFormControl name="validationCustom04" id="validationCustom04" required [placeholder]="nombresCompletos" type="text"  disabled />
             </c-col>
             <c-col class="contentInputLabel" [md]="12">
               <label class="contentLabel" cLabel for="validationCustom04" >País<span class="is-required">*</span></label>
-              <input style="font-weight: bold;" cFormControl name="validationCustom04" id="validationCustom04" required placeholder="Ecuaodor" type="text"  disabled />
+              <input *ngIf="register == true" style="font-weight: bold;" cFormControl name="validationCustom04" id="validationCustom04" required placeholder="Ecuador" type="text"  disabled />
+              <select *ngIf="registerFull == true" cSelect id="validationCustom04" required>
+                <option value="">Choose...</option>
+                <option>...</option>
+              </select>
             </c-col>
             <c-col class="contentInputLabel" [md]="12">
               <label class="contentLabel" cLabel for="validationCustom04" >{{extrangero ? 'Circunscripción':'Provincia:'}}<span class="is-required">*</span></label>
-              <input style="font-weight: bold;" cFormControl name="validationCustom04" id="validationCustom04" required [placeholder]="datosApi.nom_provincia" type="text"  disabled />
+              <input *ngIf="register == true" style="font-weight: bold;" cFormControl name="validationCustom04" id="validationCustom04" required [placeholder]="datosApi.nom_provincia" type="text"  disabled />
+              <select *ngIf="registerFull == true" cSelect id="validationCustom04" required>
+                <option value="">Choose...</option>
+                <option>...</option>
+              </select>
             </c-col>
             <c-col class="contentInputLabel" [md]="12">
               <label class="contentLabel" cLabel for="validationCustom05" >{{extrangero ? 'País de circunscripción':'Cantón:'}}<span class="is-required">*</span></label>
-              <input style="font-weight: bold;" cFormControl name="validationCustom05" id="validationCustom05" required [placeholder]="datosApi.nom_canton" type="text"  disabled />
+              <input *ngIf="register == true" style="font-weight: bold;" cFormControl name="validationCustom05" id="validationCustom05" required [placeholder]="datosApi.nom_canton" type="text"  disabled />
+              <select *ngIf="registerFull == true" cSelect id="validationCustom04" required>
+                <option value="">Choose...</option>
+                <option>...</option>
+              </select>
             </c-col>
             <c-col class="contentInputLabel" [md]="12">
               <label class="contentLabel" cLabel for="validationCustom06" >{{extrangero ? 'Centro electoral':'Parroquia:'}}<span class="is-required">*</span></label>
-              <input style="font-weight: bold;" cFormControl name="validationCustom06" id="validationCustom06" required  [placeholder]="datosApi.nom_parroquia" type="text"  disabled />
+              <input *ngIf="register == true" style="font-weight: bold;" cFormControl name="validationCustom06" id="validationCustom06" required  [placeholder]="datosApi.nom_parroquia" type="text"  disabled />
+              <select *ngIf="registerFull == true" cSelect id="validationCustom04" required>
+                <option value="">Choose...</option>
+                <option>...</option>
+              </select>
             </c-col>
             <c-col class="contentInputLabel" [md]="12">
               <label class="contentLabel" cLabel for="validationCustom07" >Teléfono celular: <span class="is-required">*</span></label>
@@ -129,7 +151,7 @@
               <input cFormControl name="validationCustom12" id="validationCustom12" required  type="text"  />
             </c-col>
             <c-col [md]="12" style="text-align: center;">
-              <button style="width: 120px;" cButton color="success" variant="outline" (click)="enviar()">Registrar</button>
+              <button style="width: 120px;" cButton variant="outline" (click)="enviar()">Registrar</button>
             </c-col>
           </div>
         </form>

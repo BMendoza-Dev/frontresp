@@ -32,14 +32,14 @@ span {
     font-family: 'Roboto', sans-serif !important;
     font-size: 14px !important; 
     font-weight: bold !important;
-    color: #8dc5fa !important; 
+    color: #133962 !important; 
 }
 
 .sinadherente{
   font-family: 'Roboto', sans-serif !important;
-    font-size: 14px !important; 
+    font-size: 12px !important; 
     font-weight: bold !important;
-    color: #c7e4ff  !important;
+    color: #133962  !important;
 }
 
 .form-container {
@@ -60,4 +60,19 @@ span {
 .contentLabel{
   margin-bottom: 0px;
 }
+
+.sinadherente {
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px; /* Esto es opcional, pero puede ayudar a mejorar la apariencia */
+  border: 1px solid #ddd; /* Un borde ligero para resaltar el contorno */
+}
+
+.adherente {
+  background-color: white;
+  border-radius: 10px;
+  padding: 10px; /* Esto es opcional, pero puede ayudar a mejorar la apariencia */
+  border: 1px solid #ddd; /* Un borde ligero para resaltar el contorno */
+}
+
 

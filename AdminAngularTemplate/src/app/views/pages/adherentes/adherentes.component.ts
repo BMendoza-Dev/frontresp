@@ -53,6 +53,8 @@ export class AdherentesComponent {
   error="";
   datosApi:datosApis;
   register = false;
+  registerFull = true;
+  nombresCompletos:string;
   checkInputLength(event: Event) {
     this.errorCedula = false
     this.imgLoading = false
@@ -64,15 +66,14 @@ export class AdherentesComponent {
       this.filtroAderente.filterCedula(value).subscribe({
         next:(res:any) => {
           debugger
-          if(res['error']){
-                console.log(res['data']);
-                debugger
+          if(res['error'] == "400"){
                 this.datosApi = res['data'];
                 this.valsinadherente = false;
                 this.loading = false;
                 this.imgLoading = true;
                 this.notAdherente = res['mensaje'];
-                this.register = true
+                this.register = true;
+                this.registerFull = false
           }else if(res['code']){
             this.valsinadherente = true;
             this.datosAdherente = res;
@@ -80,6 +81,29 @@ export class AdherentesComponent {
             this.imgLoading = true;
             this.errorCedula = false;
             this.register = false
+            this.registerFull = false
+          }else if(res['error'] == "500"){
+            this.filtroAderente.getNombreSRI(value).then((resSri:any) => {
+              debugger
+              if(resSri['nombre']){
+                this.valsinadherente = false;
+                this.loading = false;
+                this.imgLoading = true;
+                this.register = false;
+                this.registerFull = true;
+                this.nombresCompletos = resSri['nombre'];
+                this.notAdherente = res['mensaje'];
+              }else if(resSri['code']){
+                this.errorCedula = true;
+                this.errorCedulaText = "Ingrese un número de cédula valido";
+                this.valsinadherente = true;
+                this.datosAdherente = res;
+                this.loading = false;
+                this.imgLoading = true;
+                this.register = false
+                this.registerFull = false
+              }
+            })
           }
         },error:e => {
           console.log(e);
