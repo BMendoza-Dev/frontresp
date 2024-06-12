@@ -58,7 +58,57 @@ export class FiltroReporteService {
     });
   }
 
-  filter(){
+  listProvincia(id:any){
+    let url = this.url + 'CargarCicunsOProvincia?paise_id=' + id;
+    return this.http.get(url);
+  }
+
+  listCanton(id:any){
+    let url = this.url + 'Listar_Can_Pais_Cicunscripcion_Pais?prov_circ_id=' + id;
+    return this.http.get(url);
+  }
+
+  listParroquia(id:any){
+    let url = this.url + 'Listar_Parroquia_estado_Canton_Pais?Esta_Cant_id=' + id;
     
+    return this.http.get(url);
+  }
+
+  registrarRelacionPadron(data:any){
+    let url = 'https://adherenteservice.revolucionciudadana.com.ec/api/RegistrarTipoAdherenteYRedes';
+    // return this.http.get(url);
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    return new Promise((resolve, reject) => {
+      this.http.get(url,{params:data}).subscribe(res => {
+        resolve(res); {
+        }
+      }, error => {
+
+        reject(error);
+      });
+    });
+  }
+
+  registrarSinRelacionPadron(data:any){
+    let url = 'https://adherenteservice.revolucionciudadana.com.ec/api/RegistrarTipoAdherenteYRedes';
+    // return this.http.get(url);
+
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json'
+    });
+
+    return new Promise((resolve, reject) => {
+      this.http.get(url,{params:data}).subscribe(res => {
+        resolve(res); {
+        }
+      }, error => {
+
+        reject(error);
+      });
+    });
   }
 }
