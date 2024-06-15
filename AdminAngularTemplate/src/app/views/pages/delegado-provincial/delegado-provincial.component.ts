@@ -2,7 +2,11 @@ import { Component } from '@angular/core';
 import { FormControl } from '@angular/forms';
 import { FiltroReporteService } from 'src/app/servicios/filtro-reporte.service';
 import Swal from 'sweetalert2';
+
+
 import {Title} from '@angular/platform-browser'
+import { Meta } from '@angular/platform-browser';
+
 
 @Component({
   selector: 'app-delegado-provincial',
@@ -26,12 +30,15 @@ export class DelegadoProvincialComponent {
  extrangero = false;
  valsinadherente = false
  errorCedula = false 
-  constructor(private filtroAderente:FiltroReporteService, private titulo:Title) { 
-    titulo.setTitle("Sistema de Consulta de Delegados 2024");
+  constructor(private filtroAderente:FiltroReporteService, private titulo:Title, private meta:Meta) { 
+    // titulo.setTitle("Sistema de Consulta de Delegados 2024");
+    // meta.addTag({name:'description', content:'Sistema de Consulta de Delegados Revolución Ciudadana 2024'})
   }
 
   ngOnInit(): void {
-    
+    this.titulo.setTitle("Sistema de Consulta de Delegados 2024");
+    this.meta.updateTag({name:'description', content:'Sistema de Consulta de Delegados Revolución Ciudadana 2024'})
+
   }
 
   isChecked: boolean = false;

@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
-import { Title } from '@angular/platform-browser';
+import { Meta, Title } from '@angular/platform-browser';
 import { FiltroReporteService } from 'src/app/servicios/filtro-reporte.service';
 import { SpinnerService } from 'src/app/servicios/spinner.service';
 import Swal from 'sweetalert2';
@@ -43,12 +43,14 @@ export class AdherentesComponent {
  datosAdherente:any
  errorCedula = false;
  errorCedulaText = "";
-  constructor(private filtroAderente:FiltroReporteService, private titulo:Title, private spinnerService: SpinnerService) { 
-    titulo.setTitle("Sistema de Registro y Consulta de Adherentes 2024");
+  constructor(private filtroAderente:FiltroReporteService, private titulo:Title, private meta:Meta,private spinnerService: SpinnerService) { 
+    // titulo.setTitle("Sistema de Registro y Consulta de Adherentes 2024");
+    // meta.addTag({name:'description', content:'Sistema de Registro y Consulta de Adherentes Revolución Ciudadana 2024'})
   }
 
   ngOnInit(): void {
-    
+    this.titulo.setTitle("Sistema de Registro y Consulta de Adherentes 2024");
+    this.meta.updateTag({name:'description', content:'Sistema de Registro y Consulta de Adherentes Revolución Ciudadana 2024'})
   }
 
   isChecked: boolean = false;
