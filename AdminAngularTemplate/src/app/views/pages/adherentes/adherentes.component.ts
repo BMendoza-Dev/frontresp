@@ -1,5 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { FiltroReporteService } from 'src/app/servicios/filtro-reporte.service';
+import { SpinnerService } from 'src/app/servicios/spinner.service';
 import Swal from 'sweetalert2';
 
 export interface datosApis {
@@ -41,7 +43,9 @@ export class AdherentesComponent {
  datosAdherente:any
  errorCedula = false;
  errorCedulaText = "";
-  constructor(private filtroAderente:FiltroReporteService) { }
+  constructor(private filtroAderente:FiltroReporteService, private titulo:Title, private spinnerService: SpinnerService) { 
+    titulo.setTitle("Sistema de Registro y Consulta de Adherentes 2024");
+  }
 
   ngOnInit(): void {
     
@@ -69,7 +73,7 @@ export class AdherentesComponent {
 
       this.filtroAderente.filterCedula(value).subscribe({
         next:(res:any) => {
-          debugger
+          
           this.datosPadron = true
           if(res['error'] == "400"){
                 this.datosApi = res['data'];
@@ -248,7 +252,6 @@ export class AdherentesComponent {
       icon: 'success',
       title: dato,
       showConfirmButton: false,
-      timer: 1500
     }).then((result) => {
       // Se ejecuta cuando el cuadro de diálogo se cierra
       if (result.dismiss === Swal.DismissReason.timer) {
@@ -268,7 +271,8 @@ export class AdherentesComponent {
     const redfb = this.redfb.nativeElement as HTMLSelectElement;
     const redit = this.redit.nativeElement as HTMLSelectElement;
     const redttk = this.redttk.nativeElement as HTMLSelectElement;
-    const codigo = this.codigo.nativeElement as HTMLSelectElement;
+
+    const cedulaFil = this.cedulaFil.nativeElement as HTMLSelectElement;
 
     const pais = this.selectPais.nativeElement as HTMLSelectElement;
     const provincia = this.selectProvincia.nativeElement as HTMLSelectElement;
@@ -277,20 +281,26 @@ export class AdherentesComponent {
     if( parroquia.value == "" || canton.value == "" || provincia.value == "" || pais.value == "" || email.value == "" || telefono.value == "" || teredtwl.value == "" || redfb.value == "" || redit.value == "" || redttk.value == ""){
       this.validatedForm = true;
     }else{
+      this.spinnerService.llamarSpinner();
       let numtelefono;
       numtelefono = "+593 "+telefono.value;
       let data = {
+        "nom_padron":this.nombresCompletos,
+        "provincia_id":provincia.value,
+        "cantone_id":canton.value,
+        "parroquia_id":parroquia.value,
         "correo":email.value,
         "tel":numtelefono,
         "teredtwl":teredtwl.value,
         "redfb":redfb.value,
         "redit":redit.value,
         "redttk":redttk.value,
-        "padronelectoral_id":this.datosApi.padronelectoral_id
+        "cedula":cedulaFil.value
       };
-      debugger
+      
       this.filtroAderente.registrarSinRelacionPadron(data).then((rest:any) => {
-        rest; debugger
+        rest; 
+        this.spinnerService.detenerSpinner();
         this.success(rest['message']);
       })
     }
@@ -314,13 +324,13 @@ validatedForm = false;
     const redit = this.redit.nativeElement as HTMLSelectElement;
     const redttk = this.redttk.nativeElement as HTMLSelectElement;
     const codigo = this.codigo.nativeElement as HTMLSelectElement;
-    const cedulaFil = this.cedulaFil.nativeElement as HTMLSelectElement;
     if(!this.extrangero){
       codigo.value = "+593"
     }
     if(email.value == "" || telefono.value == "" || teredtwl.value == "" || redfb.value == "" || redit.value == "" || redttk.value == "" || codigo.value == ""){
       this.validatedForm = true;
     }else{
+      this.spinnerService.llamarSpinner();
       let numtelefono;
       if(this.extrangero){
         numtelefono = ""+codigo.value+" "+telefono.value;
@@ -336,9 +346,10 @@ validatedForm = false;
         "redttk":redttk.value,
         "padronelectoral_id":this.datosApi.padronelectoral_id
       };
-      debugger
+      
       this.filtroAderente.registrarRelacionPadron(data).then((rest:any) => {
-        rest; debugger
+        rest; 
+        this.spinnerService.detenerSpinner();
         this.success(rest['message']);
       })
     }

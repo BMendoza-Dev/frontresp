@@ -94,7 +94,7 @@ export class FiltroReporteService {
   }
 
   registrarSinRelacionPadron(data:any){
-    let url = 'https://adherenteservice.revolucionciudadana.com.ec/api/RegistrarTipoAdherenteYRedes';
+    let url = 'https://adherenteservice.revolucionciudadana.com.ec/api/RegistrarDatosAdherenteYRedes';
     // return this.http.get(url);
 
     const headers = new HttpHeaders({

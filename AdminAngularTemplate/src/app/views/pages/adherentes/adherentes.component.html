@@ -6,7 +6,7 @@
       <c-col md="12" class="d-flex justify-content-center">
         <c-card-group >
           <c-card style="background-color: #133962;" class="text-center">
-            <h1 style="color: white; margin-top: 5px;">SISTEMA DE REGISTRO DE ADHERENTES 2024</h1>
+            <h1 style="color: white; margin-top: 5px;">Sistema de Registro y Consulta de Adherentes 2024"</h1>
           </c-card> 
         </c-card-group>
       </c-col>
@@ -29,7 +29,7 @@
                         <c-row class="align-items-center">
                           <c-col *ngIf="loading == false && imgLoading == true" [md]="12" style="text-align: center; margin-bottom: 10px;">
                             <label *ngIf="valsinadherente == false && errorCedula == false" cLabel class="sinadherente">{{notAdherente}}</label>
-                            <label *ngIf="errorCedula == true" cLabel class="sinadherente">{{errorCedulaText}}</label>
+                            <!-- <label *ngIf="errorCedula == true" cLabel class="sinadherente">{{errorCedulaText}}</label> -->
                           </c-col>
                             <c-col >
                                 <label cLabel="col" for="inputPassword"> Número de cédula </label>
@@ -161,8 +161,8 @@
               <input cFormControl #redit  name="validationCustom12" id="validationCustom12" required  type="text"  />
             </c-col>
             <c-col [md]="12" style="text-align: center;">
-              <button *ngIf="datosPadron == true" style="width: 120px;" cButton color="success" variant="outline" (click)="guardarRegistroPadron()">Registrar P</button>
-              <button *ngIf="datosPadron == false" style="width: 120px;" cButton color="success" variant="outline" (click)="guardarRegistroSinPadron()">Registrar NP</button>
+              <button *ngIf="datosPadron == true" style="width: 120px;" cButton color="secondary" shape="rounded-pill" (click)="guardarRegistroPadron()">Registrar</button>
+              <button *ngIf="datosPadron == false" style="width: 120px;" cButton color="secondary" shape="rounded-pill" (click)="guardarRegistroSinPadron()">Registrar</button>
 
             </c-col>
           </div>
@@ -178,3 +178,5 @@
   </c-container>
   <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "ball-clip-rotate-multiple" [fullScreen] = "true"><p style="color: white" > Cargando... </p></ngx-spinner>
 </div>
+
+<!-- <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "ball-clip-rotate-multiple" [fullScreen] = "true"><p style="color: white" > Cargando... </p></ngx-spinner> -->
