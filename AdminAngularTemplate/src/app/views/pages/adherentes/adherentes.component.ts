@@ -1,5 +1,6 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { Meta, Title } from '@angular/platform-browser';
+import { NgbModal, NgbModalConfig } from '@ng-bootstrap/ng-bootstrap';
 import { FiltroReporteService } from 'src/app/servicios/filtro-reporte.service';
 import { SpinnerService } from 'src/app/servicios/spinner.service';
 import Swal from 'sweetalert2';
@@ -43,9 +44,12 @@ export class AdherentesComponent {
  datosAdherente:any
  errorCedula = false;
  errorCedulaText = "";
-  constructor(private filtroAderente:FiltroReporteService, private titulo:Title, private meta:Meta,private spinnerService: SpinnerService) { 
+  constructor(private filtroAderente:FiltroReporteService, private titulo:Title, private meta:Meta,private spinnerService: SpinnerService, config: NgbModalConfig, private modalService: NgbModal) { 
     // titulo.setTitle("Sistema de Registro y Consulta de Adherentes 2024");
     // meta.addTag({name:'description', content:'Sistema de Registro y Consulta de Adherentes Revolución Ciudadana 2024'})
+    // customize default values of modals used by this component tree
+	
+		config.keyboard = false;
   }
 
   ngOnInit(): void {
@@ -380,5 +384,9 @@ validatedForm = false;
   handleLiveDemoChange(event: any) {
     this.visible = event;
   }
+
+  open(politica:any) {
+		this.modalService.open(politica, {scrollable: true,backdrop:true, windowClass: 'custom-modal-size', size:'xl'});
+	}
 
 }
