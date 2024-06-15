@@ -57,6 +57,11 @@ span {
   margin-bottom: 0.5rem;
 }
 
+.contentInputLabel2{
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
 .contentLabel{
   margin-bottom: 0px;
 }
@@ -78,6 +83,17 @@ span {
 .small-input {
   width: 75px; /* Ajusta el tamaño según tus necesidades */
   padding: 0px; /* Ajusta el relleno según tus necesidades */
+}
+
+.larger-checkbox {
+  width: 20px; /* Ajusta el ancho del checkbox */
+  height: 20px; /* Ajusta la altura del checkbox */
+}
+
+.custom-link {
+  color: white;
+  font-weight: bold;
+  /* Otros estilos si es necesario */
 }
 
 

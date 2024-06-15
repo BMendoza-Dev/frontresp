@@ -37,7 +37,7 @@ export class DelegadoProvincialComponent {
 
   ngOnInit(): void {
     this.titulo.setTitle("Sistema de Consulta de Delegados 2024");
-    this.meta.updateTag({name:'description', content:'Sistema de Consulta de Delegados Revolución Ciudadana 2024'})
+    this.meta.addTag({name:'description', content:'Sistema de Consulta de Delegados Revolución Ciudadana 2024'})
 
   }
 

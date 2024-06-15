@@ -50,7 +50,7 @@ export class AdherentesComponent {
 
   ngOnInit(): void {
     this.titulo.setTitle("Sistema de Registro y Consulta de Adherentes 2024");
-    this.meta.updateTag({name:'description', content:'Sistema de Registro y Consulta de Adherentes Revolución Ciudadana 2024'})
+    this.meta.addTag({name:'description', content:'Sistema de Registro y Consulta de Adherentes Revolución Ciudadana 2024'})
   }
 
   isChecked: boolean = false;
@@ -280,7 +280,7 @@ export class AdherentesComponent {
     const provincia = this.selectProvincia.nativeElement as HTMLSelectElement;
     const canton = this.selectCanton.nativeElement as HTMLSelectElement;
     const parroquia = this.selectParroquia.nativeElement as HTMLSelectElement;
-    if( parroquia.value == "" || canton.value == "" || provincia.value == "" || pais.value == "" || email.value == "" || telefono.value == "" || teredtwl.value == "" || redfb.value == "" || redit.value == "" || redttk.value == ""){
+    if( this.TermCondi == false || parroquia.value == "" || canton.value == "" || provincia.value == "" || pais.value == "" || email.value == "" || telefono.value == "" || teredtwl.value == "" || redfb.value == "" || redit.value == "" || redttk.value == ""){
       this.validatedForm = true;
     }else{
       this.spinnerService.llamarSpinner();
@@ -329,7 +329,7 @@ validatedForm = false;
     if(!this.extrangero){
       codigo.value = "+593"
     }
-    if(email.value == "" || telefono.value == "" || teredtwl.value == "" || redfb.value == "" || redit.value == "" || redttk.value == "" || codigo.value == ""){
+    if(this.TermCondi == false || email.value == "" || telefono.value == "" || teredtwl.value == "" || redfb.value == "" || redit.value == "" || redttk.value == "" || codigo.value == ""){
       this.validatedForm = true;
     }else{
       this.spinnerService.llamarSpinner();
@@ -356,6 +356,29 @@ validatedForm = false;
       })
     }
     
+  }
+
+  TermCondi = false
+  check(event: any) {
+    if (event.target.checked) {
+      console.log('Checkbox está marcado');
+      this.TermCondi = true;
+      // Aquí puedes realizar cualquier acción cuando el checkbox se marca
+    } else {
+      console.log('Checkbox está desmarcado');
+      this.TermCondi = false
+      // Aquí puedes realizar cualquier acción cuando el checkbox se desmarca
+    }
+  }
+
+  public visible = false;
+
+  toggleLiveDemo() {
+    this.visible = !this.visible;
+  }
+
+  handleLiveDemoChange(event: any) {
+    this.visible = event;
   }
 
 }

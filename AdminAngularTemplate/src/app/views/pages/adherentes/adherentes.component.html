@@ -137,33 +137,40 @@
                     <input #codigo required (input)="onInputChange($event)" cFormControl style="text-align: center;" id="checkOne" type="text" class="small-input" placeholder="+593"  *ngIf="extrangero == true"/>
                   </c-form-check>
                 </span>
-                <input #telefono (input)="onInputChangeTele($event)" cFormControl name="validationCustom07" id="validationCustom07" required  type="text"  />
+                <input #telefono (input)="onInputChangeTele($event)" placeholder="9988776655" cFormControl name="validationCustom07" id="validationCustom07" required  type="text"  />
               </c-input-group>
             </c-col>
             <c-col class="contentInputLabel" [md]="12">
               <label class="contentLabel" cLabel for="validationCustom08" >Correo electrónico: <span class="is-required">*</span></label>
-              <input #email cFormControl name="validationCustom08" id="validationCustom08" required  type="text"  />
+              <input #email cFormControl placeholder="email@rc5.com" name="validationCustom08" id="validationCustom08" required  type="text"  />
             </c-col>
             <c-col class="contentInputLabel" [md]="12">
               <label class="contentLabel" cLabel for="validationCustom09" >Cuenta X (twitter): <span class="is-required">*</span></label>
-              <input cFormControl #teredtwl  name="validationCustom09" id="validationCustom09" required type="text"  />
+              <input cFormControl #teredtwl placeholder="@cuenta X(twitter)" name="validationCustom09" id="validationCustom09" required type="text"  />
             </c-col>
             <c-col class="contentInputLabel" [md]="12">
               <label class="contentLabel" cLabel for="validationCustom10" >Cuenta Facebook: <span class="is-required">*</span></label>
-              <input cFormControl #redfb  name="validationCustom10" id="validationCustom10"  required type="text"  />
+              <input cFormControl #redfb placeholder="Facebook.com/{Nombre del Usuario}" name="validationCustom10" id="validationCustom10"  required type="text"  />
             </c-col>
             <c-col class="contentInputLabel" [md]="12">
               <label class="contentLabel" cLabel for="validationCustom11" >Cuenta TikTok: <span class="is-required">*</span></label>
-              <input cFormControl #redttk  name="validationCustom11" id="validationCustom11" required type="text"  />
+              <input cFormControl #redttk placeholder="@cuentaTiktok" name="validationCustom11" id="validationCustom11" required type="text"  />
             </c-col>
             <c-col class="contentInputLabel" [md]="12">
               <label class="contentLabel" cLabel for="validationCustom12" >Cuenta en Instagram: <span class="is-required">*</span></label>
-              <input cFormControl #redit  name="validationCustom12" id="validationCustom12" required  type="text"  />
+              <input cFormControl #redit placeholder="@cuentaInstagram" name="validationCustom12" id="validationCustom12" required  type="text"  />
+            </c-col>
+            <c-col class="contentInputLabel2" [md]="12">
+              <c-form-check>
+                <input (input)="check($event)" required cFormCheckInput id="checkOne" type="checkbox" class="larger-checkbox" />
+                <label style="margin-bottom: 1rem; font-weight: lighter;" cFormCheckLabel class="contentLabel" cLabel for="validationCustom12" >Declaro aceptar y haber leído  las <a (click)="toggleLiveDemo()" class="custom-link" target="_blank" rel="noopener noreferrer" class="custom-link"><b>políticas de privacidad</b> </a> y los <a href="https://rc5.app/politicas-de-privacidad" target="_blank" rel="noopener noreferrer" class="custom-link"><b>términos y condiciones</b></a>
+                  para el uso de mis datos.<span class="is-required">*</span></label>
+                <!-- <label class="adherente"  for="checkOne"></label> -->
+              </c-form-check>
             </c-col>
             <c-col [md]="12" style="text-align: center;">
               <button *ngIf="datosPadron == true" style="width: 120px;" cButton color="secondary" shape="rounded-pill" (click)="guardarRegistroPadron()">Registrar</button>
               <button *ngIf="datosPadron == false" style="width: 120px;" cButton color="secondary" shape="rounded-pill" (click)="guardarRegistroSinPadron()">Registrar</button>
-
             </c-col>
           </div>
         </form>
@@ -175,8 +182,8 @@
         </c-card-group>
       </c-col>
     </c-row>
+    
   </c-container>
   <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "ball-clip-rotate-multiple" [fullScreen] = "true"><p style="color: white" > Cargando... </p></ngx-spinner>
 </div>
-
 <!-- <ngx-spinner bdColor = "rgba(0, 0, 0, 0.8)" size = "medium" color = "#fff" type = "ball-clip-rotate-multiple" [fullScreen] = "true"><p style="color: white" > Cargando... </p></ngx-spinner> -->
