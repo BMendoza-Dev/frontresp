@@ -8,7 +8,7 @@ import { LoginComponent } from './views/pages/login/login.component';
 import { RegisterComponent } from './views/pages/register/register.component';
 
 import { AdminLoginGuard } from './guards/admin-login.guard';
-import { AsambLoginGuard } from './guards/asamb-login.guard';
+import { HomeInicioGuard } from './guards/homeInicio.guard';
 import { AdherentesComponent } from './views/pages/adherentes/adherentes.component';
 import { DelegadoProvincialComponent } from './views/pages/delegado-provincial/delegado-provincial.component';
 
@@ -16,7 +16,7 @@ import { DelegadoProvincialComponent } from './views/pages/delegado-provincial/d
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'login',
+    redirectTo: 'adherentes',
     pathMatch: 'full'
   },
   {
@@ -25,12 +25,11 @@ export const routes: Routes = [
     data: {
       title: 'Home'
     },
+    canActivate:[HomeInicioGuard],
     children: [
-
       {
         path: 'administrador_nav_1',
         loadChildren: () => import('./views/Admin/cuenta/cuenta.module').then((m) => m.CuentaModule),
-        
       },
       {
         path: 'administrador_nav_1_1',
@@ -110,14 +109,14 @@ export const routes: Routes = [
     path: 'adherentes',
     component: AdherentesComponent,
     data: {
-      title: 'Login Page'
+      title: 'Adherentes Page',
     }
   },
   {
     path: 'delegados',
     component: DelegadoProvincialComponent,
     data: {
-      title: 'Login Page'
+      title: 'Delegados Page'
     }
   },
   
@@ -128,7 +127,7 @@ export const routes: Routes = [
   //     title: 'Register Page'
   //   }
   // },
-  { path: '**', redirectTo: 'inicio' }
+  { path: '**', redirectTo: 'adherentes' }
 ];
 
 @NgModule({
